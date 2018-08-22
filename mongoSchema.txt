@@ -1,0 +1,27 @@
+{
+    "title":"baileys cream",
+    "cuisine":"Irish",
+    "allergens":{
+        "cereals": false,
+        "crustaceans": false,
+        "eggs":false,
+        "fish":false,
+        "peanuts":false,
+        "soybeans":false,
+        "dairy":true,
+        "nuts":false,
+        "celery":false,
+        "mustard":false,
+        "sesame seeds":false,
+        "sulphites":false,
+        "lupin":false,
+        "molluscs":false,
+    },
+    "ingredients":{
+        "first":"cream",
+        second:"baileys"
+    },
+    "author":"Dave",
+    "views":NumberInt(0),
+    "likes":NumberInt(0)
+}
