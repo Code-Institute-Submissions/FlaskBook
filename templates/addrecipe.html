@@ -52,7 +52,7 @@
 <div class="row">
     <div class="input-field col s6 l3">
         <i class="material-icons prefix">shopping_cart</i>
-        <input id="ingredient_name" name="ingredient1" type="text" >
+        <input id="ingredient_name" name="ingredient1" type="text">
         <label for="icon_prefix">Ingredients:</label>
     </div>
     <div class="input-field col s6 l3">
@@ -71,73 +71,17 @@
         <label for="icon_prefix">Ingredients:</label>
     </div>
 </div>
-<div class="row">
-    <div class=" col s6 l3">
-        <p>
-            <input type="checkbox" id="allergen1" name="cereals" />
-            <label for="allergen1">Cereals</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen2" name="crustaceans" />
-            <label for="allergen2">Crustaceans</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen3" name="eggs" />
-            <label for="allergen3">Eggs</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen4" name="fish" />
-            <label for="allergen4">Fish</label>
-        </p>
-    </div>
-    <div class=" col s6 l3">
-        <p>
-            <input type="checkbox" id="allergen5" name="cereals" />
-            <label for="allergen5">Cereals</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen6" name="cereals" />
-            <label for="allergen6">Cereals</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen7" name="cereals" />
-            <label for="allergen7">Cereals</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen8" name="cereals" />
-            <label for="allergen8">Cereals</label>
-        </p>
-    </div>
-    <div class=" col s6 l3">
-        <p>
-            <input type="checkbox" id="allergen9" name="cereals" />
-            <label for="allergen9">Cereals</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen10" name="cereals" />
-            <label for="allergen10">Cereals</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen11" name="cereals" />
-            <label for="allergen11">Cereals</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen12" name="cereals" />
-            <label for="allergen12">Cereals</label>
-        </p>
-    </div>
-    <div class=" col s6 l3">
-        <p>
-            <input type="checkbox" id="allergen13" name="cereals" />
-            <label for="allergen13">Cereals</label>
-        </p>
-        <p>
-            <input type="checkbox" id="allergen4" name="cereals" />
-            <label for="allergen4">Cereals</label>
-        </p>
-    </div>
 
+<div class="input-field col s6 l6">
+    <i class="material-icons prefix">warning</i>
+    <select multiple id="allergen_name" name="allergens">
+        <option value="" disabled selected>Choose allergens</option>
+        {% for allergen in allergens %}
+        <option value="{{allergen.allergen_name}}">{{allergen.allergen_name}}</option>
+        {% endfor %}
+    </select>
 </div>
+
 <div class="row">
     <div class="input-field col s12">
         <i class="material-icons prefix">person</i>
