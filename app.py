@@ -25,10 +25,11 @@ def add_recipe():
     cuisines=mongo.db.cuisine.find(),)
     
     
+# Send the form    
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes =  mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    recipes.insert_one(request.form.to_dict(flat=False))
     return redirect(url_for('get_recipes'))
     
     
