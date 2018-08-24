@@ -42,7 +42,7 @@ def insert_recipe():
     # allergen_2 = request.form["allergen2"]
     # allergen_3 = request.form["allergen3"]
     # allergen_4 = request.form["allergen4"]
-    allergens = request.form.getlist["allergens"]
+    allergens = request.form.getlist("allergens")
 
     # recipe_author = request.form["author"]
     recipe_form = {
