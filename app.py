@@ -32,16 +32,16 @@ def insert_recipe():
     recipe_title = request.form["title"]
     recipe_method = request.form["method"]
     recipe_cuisine =  request.form["cuisine"]
-
+    
     ingredient_1 = request.form["ingredient1"]
     ingredient_2 = request.form["ingredient2"]
     ingredient_3 = request.form["ingredient3"]
     ingredient_4 = request.form["ingredient4"]
 
-    allergen_1 = request.form["cereals"]
-    allergen_2 = request.form["crustaceans"]
-    allergen_3 = request.form["eggs"]
-    allergen_4 = request.form["fish"]
+    allergen_1 = request.form["allergen1"]
+    allergen_2 = request.form["allergen2"]
+    allergen_3 = request.form["allergen3"]
+    allergen_4 = request.form["allergen4"]
 
     # recipe_author = request.form["author"]
     recipe_form = {
