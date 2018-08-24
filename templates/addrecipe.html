@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block recipes %}
+ {% extends 'base.html' %} {% block recipes %}
 <h5>Add Recipe</h5>
 <div class="row">
     <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
@@ -10,13 +10,13 @@
             </div>
             <div class="input-field col s12">
                 <i class="material-icons prefix">note_add</i>
-                <textarea id="textarea2" class="materialize-textarea" data-length="360"></textarea>
+                <textarea id="textarea2" class="materialize-textarea" data-length="360" name="method"></textarea>
                 <!-- <input id="recipe_title" name="title" type="text" required> -->
                 <label for="icon_prefix">Method</label>
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s6 l6">
+            <div class="input-field col s6 l12">
                 <i class="material-icons prefix">explore</i>
                 <select id="cuisine_name" name="cuisine">
                     <option value="" disabled selected>Choose cuisine</option>
@@ -25,70 +25,144 @@
                     {% endfor %}
                 </select>
             </div>
-            <div class="input-field col s6 l6">
-                <i class="material-icons prefix">warning</i>
-                <select multiple id="allergen_name" name="allergen">
-                    <option value="" disabled selected>Choose allergens</option>
-                    {% for allergen in allergens %}
-                    <option value="{{allergen.allergen_name}}">{{allergen.allergen_name}}</option>
-                    {% endfor %}
-                </select>
-            </div>
         </div>
-        <div class="row">
-            <div class="input-field col s6 l3">
-                <i class="material-icons prefix">shopping_cart</i>
-                <input id="ingredient_name" name="ingredient" type="text" required>
-                <label for="icon_prefix">Ingredients:</label>
-            </div>
-            <div class="input-field col s6 l3">
-                <i class="material-icons prefix">shopping_cart</i>
-                <input id="ingredient_name" name="ingredient" type="text">
-                <label for="icon_prefix">Ingredients:</label>
-            </div>
-            <div class="input-field col s6 l3">
-                <i class="material-icons prefix">shopping_cart</i>
-                <input id="ingredient_name" name="ingredient" type="text">
-                <label for="icon_prefix">Ingredients:</label>
-            </div>
-            <div class="input-field col s6 l3">
-                <i class="material-icons prefix">shopping_cart</i>
-                <input id="ingredient_name" name="ingredient" type="text">
-                <label for="icon_prefix">Ingredients:</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">person</i>
-                <select id="user_name" name="author">
-                    <option value="" disabled selected>User</option>
-                    {% for user in users %}
-                    <option value="{{user.user_name}}">{{user.user_name}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-        <!-- <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">today</i>
-                <input id="due_date" name="due_date" type="text" class="datepicker">
-                <label for="icon_prefix">Due Date</label>
-            </div>
-        </div> -->
-        <!-- <div class="row">
-            <div class="switch">
-                <label>
-                    <input id="is_urgent" name="is_urgent" type="checkbox">
-                    <span class="lever"></span>
-                    Is Urgent
-                </label>
-            </div>
-        </div> -->
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Add Task
-                <i class="material-icons right">playlist_add</i>
-            </button>
-        </div>
-    </form>
+
+        <!-- <div class="input-field col s6 l6">
+                    <i class="material-icons prefix">warning</i>
+                    <select multiple id="allergen_name" name="allergen">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="cereal">cereal</option>
+                        <option value="crustaceans">crustaceans</option>
+                        <option value="eggs">eggs</option>
+                        <option value="fish">fish</option>
+                        <option value="peanuts">peanuts</option>
+                        <option value="soybeans">soybeans</option>
+                        <option value="dairy">dairy</option>
+                        <option value="nuts">nuts</option>
+                        <option value="celery">celery</option>
+                        <option value="mustard">mustard</option>
+                        <option value="sesame_seeds">sesame seeds</option>
+                        <option value="suplhites">suplhites</option>
+                        <option value="lupin">lupin</option>
+                        <option value="molluscs">molluscs</option>
+                    </select>
+                    <label>Materialize Multiple Select</label>
+                </div> -->
+</div>
+<div class="row">
+    <div class="input-field col s6 l3">
+        <i class="material-icons prefix">shopping_cart</i>
+        <input id="ingredient_name" name="ingredient1" type="text" >
+        <label for="icon_prefix">Ingredients:</label>
+    </div>
+    <div class="input-field col s6 l3">
+        <i class="material-icons prefix">shopping_cart</i>
+        <input id="ingredient_name" name="ingredient2" type="text">
+        <label for="icon_prefix">Ingredients:</label>
+    </div>
+    <div class="input-field col s6 l3">
+        <i class="material-icons prefix">shopping_cart</i>
+        <input id="ingredient_name" name="ingredient3" type="text">
+        <label for="icon_prefix">Ingredients:</label>
+    </div>
+    <div class="input-field col s6 l3">
+        <i class="material-icons prefix">shopping_cart</i>
+        <input id="ingredient_name" name="ingredient4" type="text">
+        <label for="icon_prefix">Ingredients:</label>
+    </div>
+</div>
+<div class="row">
+    <div class=" col s6 l3">
+        <p>
+            <input type="checkbox" id="allergen1" name="cereals" />
+            <label for="allergen1">Cereals</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen2" name="crustaceans" />
+            <label for="allergen2">Crustaceans</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen3" name="eggs" />
+            <label for="allergen3">Eggs</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen4" name="fish" />
+            <label for="allergen4">Fish</label>
+        </p>
+    </div>
+    <div class=" col s6 l3">
+        <p>
+            <input type="checkbox" id="allergen5" name="cereals" />
+            <label for="allergen5">Cereals</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen6" name="cereals" />
+            <label for="allergen6">Cereals</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen7" name="cereals" />
+            <label for="allergen7">Cereals</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen8" name="cereals" />
+            <label for="allergen8">Cereals</label>
+        </p>
+    </div>
+    <div class=" col s6 l3">
+        <p>
+            <input type="checkbox" id="allergen9" name="cereals" />
+            <label for="allergen9">Cereals</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen10" name="cereals" />
+            <label for="allergen10">Cereals</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen11" name="cereals" />
+            <label for="allergen11">Cereals</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen12" name="cereals" />
+            <label for="allergen12">Cereals</label>
+        </p>
+    </div>
+    <div class=" col s6 l3">
+        <p>
+            <input type="checkbox" id="allergen13" name="cereals" />
+            <label for="allergen13">Cereals</label>
+        </p>
+        <p>
+            <input type="checkbox" id="allergen4" name="cereals" />
+            <label for="allergen4">Cereals</label>
+        </p>
+    </div>
+
+</div>
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">person</i>
+        <select id="user_name" name="author">
+            <option value="" disabled selected>User</option>
+            {% for user in users %}
+            <option value="{{user.user_name}}">{{user.user_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="switch">
+        <label>
+            <input id="is_urgent" name="is_urgent" type="checkbox">
+            <span class="lever"></span>
+            Is Urgent
+        </label>
+    </div>
+</div> -->
+<div class="row">
+    <button class="btn waves-effect waves-light" type="submit" name="action">Add Task
+        <i class="material-icons right">playlist_add</i>
+    </button>
+</div>
+</form>
 </div>
 {% endblock %}
