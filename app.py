@@ -42,22 +42,23 @@ def insert_recipe():
     # allergen_2 = request.form["allergen2"]
     # allergen_3 = request.form["allergen3"]
     # allergen_4 = request.form["allergen4"]
-    allergens = request.form.getlist("allergens")
-
+    # allergens = request.form.getlist("allergens", None)
+    # print("Allergens are: ", allergens)
     # recipe_author = request.form["author"]
     recipe_form = {
         "title": recipe_title,
         "method": recipe_method,
-        "cuisine": recipe_cuisine,
-        "ingredients": {
-            "first": ingredient_1,
-            "second": ingredient_2,
-            "third": ingredient_3,
-            "fourth": ingredient_4,
-        },
-        "allergens": allergens
+        "cuisine": recipe_cuisine
+        # "ingredients": {
+        #     "first": ingredient_1,
+        #     "second": ingredient_2,
+        #     "third": ingredient_3,
+        #     "fourth": ingredient_4,
+        # },
+        # "allergens": allergens
     }
-    recipes.insert_one(recipe_form)
+    print(recipe_form)
+    # recipes.insert_one(recipe_form)
     return redirect(url_for('get_recipes'))
     
     
