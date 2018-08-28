@@ -6,6 +6,18 @@
     padding: 0 0.5em;
 }
 
-.task_header {
+.recipe_header {
     margin-top: 5px;
+}
+
+.main-container{
+    margin-top: 15px;
+}
+
+.fab-button{
+    background-color: #ee6e73;
+}
+
+.mobile-nav{
+    margin-top: 25%;
 }

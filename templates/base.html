@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Graham Sweeney | Singer Songwriter</title>
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
@@ -12,7 +17,7 @@
         <nav>
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="" class="brand-logo">Cook Book</a>
+                    <a href="{{url_for('get_recipes')}}" class="brand-logo">Cook Book</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse">
                         <i class="material-icons">menu</i>
                     </a>
@@ -21,32 +26,76 @@
                             <a href="{{url_for('get_recipes')}}">Home</a>
                         </li>
                         <li>
-                            <a href="{{url_for('add_recipe')}}">New Task</a>
+                            <a href="{{url_for('add_recipe')}}">New Recipe</a>
+                        </li>
+                        <li>
+                            <a href="{{url_for('get_cuisines')}}">Cuisines</a>
+                        </li>
+                        <li>
+                            <a href="{{url_for('add_cuisine')}}">Add cuisine</a>
                         </li>
                     </ul>
                     <ul class="side-nav" id="mobile-demo">
-                        <li>
-                            <a href="{{url_for('get_recipes')}}">Home</a>
-                        </li>
-                        <li>
-                            <a href="{{url_for('add_recipe')}}">New Task</a>
-                        </li>
-
+                        <div class="mobile-nav">
+                            <li>
+                                <a href="{{url_for('get_recipes')}}">Home</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{url_for('add_recipe')}}">New Recipe</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{url_for('get_cuisines')}}">Cuisines</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{{url_for('add_cuisine')}}">Add cuisine</a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        {% block recipes %} {% endblock %}
+    <div class="container main-container">
+        {% block content %} {% endblock %}
+    </div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons fab-button">mode_edit</i>
+        </a>
+        <ul>
+            <!-- <li>
+                <a class="btn-floating red">
+                    <i class="material-icons">insert_chart</i>
+                </a>
+            </li>
+            <li>
+                <a class="btn-floating yellow darken-1">
+                    <i class="material-icons">format_quote</i>
+                </a>
+            </li> -->
+            <li>
+                <a class="btn-floating green" href="{{url_for('add_cuisine')}}">
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                </a>Cuisine
+            </li>
+            <li>
+                <a class="btn-floating blue" href="{{url_for('add_recipe')}}">
+                    <i class="fa fa-cutlery" aria-hidden="true"></i>
+                </a>Recipe
+            </li>
+        </ul>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.collapsible').collapsible();
             $('select').material_select();
             $(".button-collapse").sideNav();
+            $('.fixed-action-btn').floatingActionButton();
         });
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
@@ -57,6 +106,7 @@
             closeOnSelect: false // Close upon selecting a date,
         });
     </script>
+    <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
 </body>
 
 </html>
