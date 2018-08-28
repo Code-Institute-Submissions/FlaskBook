@@ -1,2 +1,0 @@
-TODO: Add FAB for adding new recipe 
-TODO: Display each recipe on own page/route

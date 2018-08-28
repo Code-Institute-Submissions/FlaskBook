@@ -163,8 +163,13 @@ def insert_cuisine():
 
 # Users *********************************************************************
 
-    
+
+# For local deployment
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-        port=int(os.environ.get('PORT')),
-        debug=True)
+    app.run(debug=True)
+
+# For Heroku deployment    
+# if __name__ == '__main__':
+#     app.run(host=os.environ.get('IP'),
+#         port=int(os.environ.get('PORT')),
+#         debug=True)
