@@ -97,6 +97,8 @@ def update_recipe(recipe_id):
     return redirect(url_for('get_recipes'))
 
 
+
+
 # Delete/Mark done recipe
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
@@ -149,7 +151,7 @@ def add_cuisine():
     return redirect(url_for('get_cuisines'))
 
 # Submit add cuisine form
-@app.route('/insert_cuisine', methods=["POST"])
+@app.route('/insert_cuisine/<recipe_id>', methods=["POST"])
 def insert_cuisine():
     cuisines = mongo.db.cuisine
     cuisine_name = request.form['cuisine_name']
@@ -161,15 +163,52 @@ def insert_cuisine():
     cuisines.insert_one(cuisine_form)
     return redirect(url_for('get_cuisines'))
 
-# Users *********************************************************************
+# Users ************************************************************************
+
+# Voting ***********************************************************************
+
+# Upvote recipe
+@app.route('/upvote_recipe/<recipe_id>', methods=["GET", "POST"])
+def upvote_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update({'_id': ObjectId(recipe_id)}, 
+        {
+            '$inc': {'votes': 1}
+        }
+    )
+    return redirect(url_for('get_recipes'))
+
+# Downvote recipe
+# Upvote recipe
+@app.route('/downvote_recipe/<recipe_id>', methods=["GET", "POST"])
+def downvote_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update({'_id': ObjectId(recipe_id)}, 
+        {
+            '$inc': {'votes': -1}
+        }
+    )
+    # current_votes = mongo.db.recipes.find("votes")
+    # print(current_votes)
+    # if (current_votes >= 0):
+    #     recipes.update({'_id': ObjectId(recipe_id)}, 
+    #     {
+    #         '$inc': {'votes': 1}
+    #     }
+    # )
+    return redirect(url_for('get_recipes'))
+
+
+
+    
 
 
 # For local deployment
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
 
 # For Heroku deployment    
-# if __name__ == '__main__':
-#     app.run(host=os.environ.get('IP'),
-#         port=int(os.environ.get('PORT')),
-#         debug=True)
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+        port=int(os.environ.get('PORT')),
+        debug=True)

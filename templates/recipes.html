@@ -1,27 +1,51 @@
 {% extends 'base.html' %} {% block content %}
-<ul class="collapsible" data-collapsible="accordion">
-    {% for recipe in recipes %}
-    <li>
-        <div class="collapsible-header">
+
+{% for recipe in recipes %}
+<!-- <div class="collapsible-header">
             <div class="col s3">
                 <i class="material-icons">expand_more</i>
             </div>
             <div class=" recipe_header col s9">
-                <strong>{{recipe.title}}</strong> - {{recipe.author}}
+                <strong>{{recipe.title}}</strong>
             </div>
         </div>
         <div class="collapsible-body">
+            <strong>Method:</strong><br>
             <span>
                 {{recipe.method}}
             </span>
             <div>
-                <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small">Done</a>
-                <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
-            </div>
+                <strong>Votes: </strong>{{recipe.votes}}
+                <div align="right">
+                    <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small green darken-1 tooltipped"
+                        data-position="bottom" data-tooltip="Upvote"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+                    <a href="{{url_for('downvote_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small red darken-1 tooltipped"
+                        data-position="bottom" data-tooltip="Downvote"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+                    <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small blue tooltipped "
+                        data-position="bottom" data-tooltip="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div> -->
+<div class="col s3">
+    <div class="card blue-grey darken-2">
+        <div class="card-content white-text">
+            <span class="card-title"><strong>{{recipe.title}}</strong></span>
+            <p>{{recipe.method}}</p>
         </div>
-    </li>
-    {% endfor %}
-</ul>
+        <div class="card-action">
+            <strong>Votes: </strong>{{recipe.votes}}
+            <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small green darken-1 tooltipped"
+                data-position="bottom" data-tooltip="Upvote"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+            <a href="{{url_for('downvote_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small red darken-1 tooltipped"
+                data-position="bottom" data-tooltip="Downvote"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small blue tooltipped "
+                data-position="bottom" data-tooltip="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
 
 
 {% endblock %}
