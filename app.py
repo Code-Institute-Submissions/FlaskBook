@@ -13,8 +13,9 @@ mongo = PyMongo(app)
 @app.route('/')
 def home_page():
     return render_template("home.html")
-# Recipes *********************************************************************
 
+
+# Recipes *********************************************************************
 # Get all recipes
 @app.route('/get_recipes')
 def get_recipes():
@@ -107,8 +108,19 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
 
-# Meal types *******************************************************************
+# Recipe on seperate page
+# @app.route('/recipe_page/<recipe_id>', methods=['POST'])
+# def recipe_page(recipe_id):
+#     this_recipe = recipe_id
+#     print("This recipe: ", this_recipe)
+#     return redirect(url_for('recipe_single', this_recipe=this))
 
+# Render the single recipe
+@app.route('/recipe_single/<recipe_id>')
+def recipe_single(recipe_id):
+    return render_template("recipepage.html", recipes=mongo.db.recipes.find( {'_id': ObjectId(recipe_id)}))
+
+# Meal types *******************************************************************
 # Breakfast meals
 @app.route('/breakfast_meals')
 def breakfast_meals():        
@@ -234,7 +246,6 @@ def downvote_recipe(recipe_id):
 # Search term from search box
 @app.route('/search_box/', methods=["POST"])
 def search_box():
-    term = 'Test'
     search_term = request.form['search_text']    
     return redirect(url_for('search_results', search_text=search_term))
 
@@ -242,17 +253,19 @@ def search_box():
 @app.route('/search_results/<search_text>')
 def search_results(search_text):
     search_results = mongo.db.recipes.find({'$text': { '$search': search_text }})
+    # for item in search_results:
+    #     print("Search results: ", item)    
     return render_template("search-results.html", recipes=search_results)
 
     
 
 
 # For local deployment
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 
 # For Heroku deployment    
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-        port=int(os.environ.get('PORT')),
-        debug=True)
+# if __name__ == '__main__':
+#     app.run(host=os.environ.get('IP'),
+#         port=int(os.environ.get('PORT')),
+#         debug=True)

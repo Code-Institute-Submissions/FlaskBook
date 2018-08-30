@@ -125,9 +125,9 @@
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-    border: 1px solid green;
-    background-color: #fff !important;
-    -webkit-text-fill-color: green;
+    /* border: 1px solid red; */
+    background-color: #fff;
+    -webkit-text-fill-color: black;
     -webkit-box-shadow: 0 0 0px 1000px #000 inset;
-    transition: background-color 5000s ease-in-out 0s;
+    transition: background-color 5000s ease-in-out 0s pink;
   }

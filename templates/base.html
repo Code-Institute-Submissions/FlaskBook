@@ -39,7 +39,7 @@
                         </li> -->
                         <li>
                             <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
-                                <input id="search" type="search" name="search_text" placeholder="Search">
+                                <input id="search" type="search" name="search_text" placeholder="Search" required>
                             </form>
                         </li>
                         <li>
@@ -66,7 +66,7 @@
                             </li>
                             <li>
                                 <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
-                                    <input id="search" type="search" name="search_text" placeholder="Search">
+                                    <input id="search" type="search" name="search_text" placeholder="Search" required>
                                 </form>
                             </li>
                             <li>
@@ -132,7 +132,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#sendForm").click(function () {
-                $("#search-form").submit();
+                if ($('#sendFrom').html() != '') {
+                    $("#search-form").submit();                    
+                }
             });
         });
     </script>
