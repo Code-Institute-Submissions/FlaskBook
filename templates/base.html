@@ -43,8 +43,7 @@
                             </form>
                         </li>
                         <li>
-                            <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small search-submit-button"><i
-                                    class="material-icons right">search</i></a>
+                            <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small"><i class="material-icons right">search</i></a>
 
                         </li>
                     </ul>
@@ -57,22 +56,22 @@
                             <li>
                                 <a href="{{url_for('get_recipes')}}">Recipes</a>
                             </li>
-                            
+                            <li class="divider"></li>
                             <!-- <li>
                                 <a href="{{url_for('add_recipe')}}">New Recipe</a>
                             </li> -->
-                            
+                            <li class="divider"></li>
                             <li>
                                 <a href="{{url_for('get_cuisines')}}">Cuisines</a>
                             </li>
-                            
                             <li>
                                 <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
                                     <input id="search" type="search" name="search_text" placeholder="Search">
                                 </form>
                             </li>
                             <li>
-                                <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small ">
+                                <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small"><i class="material-icons right">search</i></a>
+
                             </li>
                         </div>
                     </ul>
