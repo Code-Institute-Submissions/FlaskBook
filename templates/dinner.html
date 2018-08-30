@@ -1,15 +1,18 @@
 {% extends 'base.html' %} {% block content %}
 
+<div>
+    <h4 style="text-align:center" >Dinner recipes</h4>
+</div>
 {% for recipe in recipes %}
 <div class="col s3">
     <div class="card">
-        <div class="card-content">
+        <div class="card-content hvr-overline-from-left">
             <span class="card-title"><strong class="strong-text">{{recipe.title}}</strong></span>
             <p>{{recipe.method}}</p>
         </div>
         <div class="card-action">
             <strong>Votes: </strong>{{recipe.votes}}
-            <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small green darken-1 tooltipped"
+            <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small green darken-1 tooltipped"
                 data-position="bottom" data-tooltip="Upvote"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
             <a href="{{url_for('downvote_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small red darken-1 tooltipped"
                 data-position="bottom" data-tooltip="Downvote"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>

@@ -11,6 +11,8 @@ app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 
 @app.route('/')
+def home_page():
+    return render_template("home.html")
 # Recipes *********************************************************************
 
 # Get all recipes
@@ -91,7 +93,7 @@ def update_recipe(recipe_id):
     {
         'title':request.form['recipe_title'],
         'method':request.form['recipe_method'],
-        'author': request.form['user_name']
+        # 'author': request.form['user_name']
         # 'cuisine': request.form['cuisine_name']
     })
     return redirect(url_for('get_recipes'))
@@ -105,13 +107,49 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
 
+# Meal types *******************************************************************
+
+# Breakfast meals
+@app.route('/breakfast_meals')
+def breakfast_meals():        
+    return render_template("breakfast.html", recipes=mongo.db.recipes.find({"meal":"breakfast"}))
+
+# Lunch meals
+@app.route('/lunch_meals')
+def lunch_meals():
+    return render_template("lunch.html", recipes=mongo.db.recipes.find({"meal":"lunch"}))
+
+# Dinner meals
+@app.route('/dinner_meals')
+def dinner_meals():
+    return render_template("dinner.html", recipes=mongo.db.recipes.find({"meal":"dinner"}))
+
+# Dessert meals
+@app.route('/dessert_meals')
+def dessert_meals():
+    return render_template("dessert.html", recipes=mongo.db.recipes.find({"meal":"dessert"}))
+
+# Snack meals
+@app.route('/snack_meals')
+def snack_meals():
+    return render_template("snack.html", recipes=mongo.db.recipes.find({"meal":"snack"}))
+
+# Ligt-bites meals
+@app.route('/lightbites_meals')
+def lightbites_meals():
+    return render_template("light-bites.html", recipes=mongo.db.recipes.find({"meal":"light-bites"}))
 # Cuisines *********************************************************************
 
 # Get cuisines route
 @app.route('/get_cuisines')
 def get_cuisines():
-    return render_template('cuisines.html', 
-        cuisines=mongo.db.cuisine.find())
+    get_cuisines = mongo.db.cuisine.find()
+    
+    # TESTING:
+    for item in get_cuisines:
+        print(item)
+
+    return render_template('cuisines.html', cuisines=mongo.db.cuisine.find())
 
 # Edit cuisine
 @app.route('/edit_cuisine/<cuisine_id>')
@@ -187,18 +225,24 @@ def downvote_recipe(recipe_id):
         {
             '$inc': {'votes': -1}
         }
-    )
-    # current_votes = mongo.db.recipes.find("votes")
-    # print(current_votes)
-    # if (current_votes >= 0):
-    #     recipes.update({'_id': ObjectId(recipe_id)}, 
-    #     {
-    #         '$inc': {'votes': 1}
-    #     }
-    # )
+    )    
     return redirect(url_for('get_recipes'))
 
 
+# Searching  *******************************************************************
+
+# Search term from search box
+@app.route('/search_box/', methods=["POST"])
+def search_box():
+    term = 'Test'
+    search_term = request.form['search_text']    
+    return redirect(url_for('search_results', search_text=search_term))
+
+# Search results route
+@app.route('/search_results/<search_text>')
+def search_results(search_text):
+    search_results = mongo.db.recipes.find({'$text': { '$search': search_text }})
+    return render_template("search-results.html", recipes=search_results)
 
     
 

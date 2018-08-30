@@ -8,8 +8,26 @@
 ---
 
 ## TODO lists:
-
+ 
 TODO: Display each recipe on own page/route
+
+TODO: Wire up delete recipe button on editrecipe.html
+
+TODO: Add search recipes functionality
+
+TODO: Sort recipes by votes, date added etc.
+
+TODO: Refine search by cuisine, meal time etc (slimming world)
+
+TODO: Add cooking time, serves etc.
+
+TODO: Measurent converter i.e. imperial/metric for each recipe switch button
+
+TODO: Print recipe option
+
+FIXME: add_cuisine is broken
+
+FIXME: votes dont render after editing recipe
 
 FIXME: allergen list not being passed
 

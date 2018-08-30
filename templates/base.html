@@ -12,45 +12,67 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
 </head>
 
-<body>
+<body class="body-custom">
     <header>
-        <nav>
+        <nav class="nav-bgc">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="{{url_for('get_recipes')}}" class="brand-logo">Cook Book</a>
+                    <a href="{{url_for('home_page')}}" class="brand-logo">Cook Book</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse">
                         <i class="material-icons">menu</i>
                     </a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
-                            <a href="{{url_for('get_recipes')}}">Home</a>
+                            <a href="{{url_for('home_page')}}">Home</a>
                         </li>
                         <li>
-                            <a href="{{url_for('add_recipe')}}">New Recipe</a>
+                            <a href="{{url_for('get_recipes')}}">Recipes</a>
                         </li>
+                        <!-- <li>
+                            <a href="{{url_for('add_recipe')}}">New Recipe</a>
+                        </li> -->
                         <li>
                             <a href="{{url_for('get_cuisines')}}">Cuisines</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="{{url_for('add_cuisine')}}">Add cuisine</a>
+                        </li> -->
+                        <li>
+                            <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
+                                <input id="search" type="search" name="search_text" placeholder="Search">
+                            </form>
+                        </li>
+                        <li>
+                            <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small search-submit-button"><i
+                                    class="material-icons right">search</i></a>
+
                         </li>
                     </ul>
+
                     <ul class="side-nav" id="mobile-demo">
                         <div class="mobile-nav">
                             <li>
-                                <a href="{{url_for('get_recipes')}}">Home</a>
+                                <a href="{{url_for('home_page')}}">Home</a>
                             </li>
-                            <li class="divider"></li>
                             <li>
-                                <a href="{{url_for('add_recipe')}}">New Recipe</a>
+                                <a href="{{url_for('get_recipes')}}">Recipes</a>
                             </li>
-                            <li class="divider"></li>
+                            
+                            <!-- <li>
+                                <a href="{{url_for('add_recipe')}}">New Recipe</a>
+                            </li> -->
+                            
                             <li>
                                 <a href="{{url_for('get_cuisines')}}">Cuisines</a>
                             </li>
-                            <li class="divider"></li>
+                            
                             <li>
-                                <a href="{{url_for('add_cuisine')}}">Add cuisine</a>
+                                <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
+                                    <input id="search" type="search" name="search_text" placeholder="Search">
+                                </form>
+                            </li>
+                            <li>
+                                <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small ">
                             </li>
                         </div>
                     </ul>
@@ -62,7 +84,7 @@
         {% block content %} {% endblock %}
     </div>
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red">
+        <a class="btn-floating btn-large red fab-button">
             <i class="large material-icons fab-button">mode_edit</i>
         </a>
         <ul>
@@ -106,6 +128,16 @@
             closeOnSelect: false // Close upon selecting a date,
         });
     </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sendForm").click(function () {
+                $("#search-form").submit();
+            });
+        });
+    </script>
+
     <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
 </body>
 
