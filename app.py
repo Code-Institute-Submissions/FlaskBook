@@ -210,8 +210,8 @@ def get_cuisines():
     return render_template('cuisines.html', cuisines=mongo.db.cuisine.find())
 
 # Edit cuisine
-@app.route('/insert_cuisine/<cuisine_id>')
-def insert_cuisine(cuisine_id):
+@app.route('/edit_cuisine/<cuisine_id>')
+def edit_cuisine(cuisine_id):
     the_cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cuisine_id)})    
     return render_template('editcuisine.html', cuisine=the_cuisine )
 
@@ -238,13 +238,6 @@ def delete_cuisine(cuisine_id):
 def add_cuisine():
     return render_template('addcuisine.html',
         cuisines=mongo.db.cuisine.find())
-
-
-    cuisines = mongo.db.cuisine
-    cuisine_name = request.form['cuisine_name']
-    cuisines.insert_one(cuisine_name)
-
-    return redirect(url_for('get_cuisines'))
 
 # Submit add cuisine form
 @app.route('/insert_cuisine/<recipe_id>', methods=["POST"])
