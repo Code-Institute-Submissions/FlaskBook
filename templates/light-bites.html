@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block light_bites %}
 
 <div>
     <h4 style="text-align:center" >Light-bites recipes</h4>
@@ -7,7 +7,7 @@
 <div class="col s3">
     <div class="card">
         <div class="card-content hvr-overline-from-left">
-            <span class="card-title"><strong class="strong-text">{{recipe.title}}</strong></span>
+            <span class="card-title"><strong class="strong-text"><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}">{{recipe.title}}</a></strong></span>
             <p>{{recipe.method}}</p>
         </div>
         <div class="card-action">

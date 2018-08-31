@@ -1,0 +1,21 @@
+{% block sort %}
+<div class="input-field">
+    <select id="sort-select">
+        <option value="disabled" disabled selected>Sort recipes</option>
+        <option value="desc">Cooking-time desc</option>
+        <option value="asc">Cooking-time asc</option>
+        <option value="votes-desc">Votes desc</option>
+        <option value="votes-asc">Votes asc</option>
+        <option value="date-desc">Newest</option>
+        <option value="date-asc">Oldest</option>
+        <!-- <option value="3"><p>
+          <label>
+            <input type="checkbox" />
+            <span>Red</span>
+          </label>
+        </p></option> -->
+    </select>
+    <!-- <label>Materialize Select</label> -->
+</div>
+
+{% endblock %}

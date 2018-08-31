@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PyCook | A Cookbook for Pythons!</title>
 
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"> -->
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
@@ -43,7 +47,7 @@
                             </form>
                         </li>
                         <li>
-                            <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small search-submit-button"><i class="material-icons right">search</i></a>
+                            <a id="sendForm" for="submit-form" class="waves-effect search-submit-button"><i class="material-icons right">search</i></a>
 
                         </li>
                     </ul>
@@ -80,23 +84,23 @@
         </nav>
     </header>
     <div class="container main-container">
-        {% block content %} {% endblock %}
+        {% block recipes %} {% endblock %}
+        {% block add_recipe %} {% endblock %}        
+        {% block cuisines %} {% endblock %}
+        {% block add_cuisine %} {% endblock %}
+        {% block recipe_single %} {% endblock %}
+        {% block breakfast %} {% endblock %}
+        {% block lunch %} {% endblock %}
+        {% block dinner %} {% endblock %}
+        {% block dessert %} {% endblock %}
+        {% block snack %} {% endblock %}
+        {% block light_bites %} {% endblock %}
     </div>
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large red fab-button">
             <i class="large material-icons fab-button">mode_edit</i>
         </a>
         <ul>
-            <!-- <li>
-                <a class="btn-floating red">
-                    <i class="material-icons">insert_chart</i>
-                </a>
-            </li>
-            <li>
-                <a class="btn-floating yellow darken-1">
-                    <i class="material-icons">format_quote</i>
-                </a>
-            </li> -->
             <li>
                 <a class="btn-floating green" href="{{url_for('add_cuisine')}}">
                     <i class="fa fa-book" aria-hidden="true"></i>
@@ -111,12 +115,15 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <!-- Materialize CSS init's -->
     <script type="text/javascript">
         $(document).ready(function () {
             $('.collapsible').collapsible();
             $('select').material_select();
             $(".button-collapse").sideNav();
             $('.fixed-action-btn').floatingActionButton();
+            $('.dropdown-trigger').dropdown();
         });
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
@@ -128,18 +135,57 @@
         });
     </script>
 
-
+    <!-- Submit search form on click search icon -->
     <script type="text/javascript">
         $(document).ready(function () {
             $("#sendForm").click(function () {
                 if ($('#sendFrom').html() != '') {
-                    $("#search-form").submit();                    
+                    $("#search-form").submit();
                 }
             });
         });
     </script>
 
+    <!-- TODO: Reload votes div without refresh -->
+
+    <!-- // Sort recipes on select change -->
+    <script>
+        $(function () {
+            // bind change event to select
+            $('#sort-select').on('change', function () {
+                var url = $(this).val(); // get selected value
+                if (url == 'desc') {
+                    window.location = "{{url_for('recipes_time_desc')}}"; // redirect
+                }
+                if (url == 'asc') {
+                    window.location = "{{url_for('recipes_time_asc')}}"; // redirect
+                }
+                if (url == 'votes-desc') {
+                    window.location = "{{url_for('votes_desc')}}"; // redirect
+                }
+                if (url == 'votes-asc') {
+                    window.location = "{{url_for('votes_asc')}}"; // redirect
+                }
+                if (url == 'date-desc') {
+                    window.location = "{{url_for('date_desc')}}"; // redirect
+                }
+                if (url == 'date-asc') {
+                    window.location = "{{url_for('date_asc')}}"; // redirect
+                }
+                return false;
+            });
+        });
+    </script>
+
     <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
+
+    <!-- Bootstrap V4 -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script> -->
 </body>
 
 </html>

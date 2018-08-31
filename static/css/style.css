@@ -1,3 +1,49 @@
+.raisin-black{
+    background-color: #252627;
+}
+
+.alabaster{
+    background-color: #F2EFE9;
+}
+
+.grey{
+    background-color: #564E58;
+}
+
+.khaki{
+    background-color: #BFB48F;
+}
+
+.rose-taupe{
+    background-color: #904E55;
+}
+
+.badge.new.rose-taupe{
+    background-color: #904E55;
+    border-radius: 15px 50px;
+}
+
+.btn{
+    border-radius: 25px;
+}
+
+.card-action-bgcolor{
+    background-color: #F2EFE9;    
+}
+
+.refine-menu{
+    margin-top: 15%;
+}
+
+.refine-menu li{
+    margin-top: 10px;
+}
+
+.dropdown-content{
+    width: max-content !important;
+    height:auto !important;
+ }
+
 
 .search-submit-button{
     margin: -30px;
@@ -5,6 +51,11 @@
 
 .card-title-text{
     color: #fff;
+    text-decoration: none;
+}
+
+.recipe-title-text{
+    color: #904E55;
     text-decoration: none;
 }
 

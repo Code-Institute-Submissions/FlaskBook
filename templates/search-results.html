@@ -1,13 +1,4 @@
 {% extends 'base.html' %} {% block content %}
-<div class="nav-wrapper">
-    <form action="{{ url_for('search_box') }}" method="POST" class="col s12">
-        <div class="input-field">
-            <input id="search" type="search" name="search_text">
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-        </div>
-    </form>
-</div>
 <div>
     <h4 style="text-align:center">Search results</h4>
 </div>
@@ -15,7 +6,7 @@
 <div class="col s3">
     <div class="card">
         <div class="card-content hvr-overline-from-left">
-            <span class="card-title"><strong class="strong-text">{{recipe.title}}</strong></span>
+            <span class="card-title"><strong class="strong-text"><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}">{{recipe.title}}</a></strong></span>
             <p>{{recipe.method}}</p>
         </div>
         <div class="card-action">

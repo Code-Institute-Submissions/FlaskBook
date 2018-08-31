@@ -1,4 +1,5 @@
 import os
+import datetime, time
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -57,6 +58,7 @@ def insert_recipe():
         "title": recipe_title,
         "method": recipe_method,
         "cuisine": recipe_cuisine,
+        "last_modified": time.asctime( time.localtime(time.time()) ),
         # "user": recipe_user
         # "ingredients": {
         #     "first": ingredient_1,
@@ -118,7 +120,51 @@ def delete_recipe(recipe_id):
 # Render the single recipe
 @app.route('/recipe_single/<recipe_id>')
 def recipe_single(recipe_id):
-    return render_template("recipepage.html", recipes=mongo.db.recipes.find( {'_id': ObjectId(recipe_id)}))
+    return render_template("recipepage.html", 
+                recipes=mongo.db.recipes.find( {'_id': ObjectId(recipe_id)}))
+
+# Meal types *******************************************************************
+
+# Sort recipes:
+# by Cooking-time descending
+@app.route('/recipes_time_desc')
+def recipes_time_desc():
+    col_sorted_desc = mongo.db.recipes.find({"cooking-time": {"$gt": 0}}).sort([("cooking-time", -1)])
+    return render_template("recipes.html", recipes=col_sorted_desc)
+
+# by Cooking-time ascending
+@app.route('/recipes_time_asc')
+def recipes_time_asc():
+    col_sorted_asc = mongo.db.recipes.find({"cooking-time": {"$gt": 0}}).sort([("cooking-time", 1)])
+    return render_template("recipes.html", recipes=col_sorted_asc)
+
+# by Votes descending
+@app.route('/votes_desc')
+def votes_desc():
+    col_sorted_votes_desc = mongo.db.recipes.find({"votes": {"$gt": -1}}).sort([("votes", -1)])
+    return render_template("recipes.html", recipes=col_sorted_votes_desc)
+
+# by Votes ascending
+@app.route('/votes_asc')
+def votes_asc():
+    col_sorted_votes_asc = mongo.db.recipes.find({"votes": {"$gt": -1}}).sort([("votes", 1)])
+    return render_template("recipes.html", recipes=col_sorted_votes_asc)
+
+# by Date descending
+@app.route('/date_desc')
+def date_desc():    
+    col_sorted_date_desc = mongo.db.recipes.find().sort("last_modified", -1)
+    # for item in col_sorted_date_desc:
+    #     print("Item: ", item)
+    return render_template("recipes.html", recipes=col_sorted_date_desc)
+
+# by Date ascending
+@app.route('/date_asc')
+def date_asc():    
+    col_sorted_date_asc = mongo.db.recipes.find().sort("last_modified", 1)
+    # for item in col_sorted_date_asc:
+    #     print("Item: ", item)
+    return render_template("recipes.html", recipes=col_sorted_date_asc)
 
 # Meal types *******************************************************************
 # Breakfast meals
@@ -229,7 +275,6 @@ def upvote_recipe(recipe_id):
     return redirect(url_for('get_recipes'))
 
 # Downvote recipe
-# Upvote recipe
 @app.route('/downvote_recipe/<recipe_id>', methods=["GET", "POST"])
 def downvote_recipe(recipe_id):
     recipes = mongo.db.recipes
