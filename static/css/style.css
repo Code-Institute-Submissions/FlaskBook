@@ -1,86 +1,89 @@
-.btn-x-small{
-    height: 23px;
-    line-height: 23px;
+.container{
+    min-width: 85%;
 }
 
-.cancel-float-right{
-    float:right;
+.btn-x-small {
+    height: 26px;
+    line-height: 26px;
 }
 
-.raisin-black{
+.cancel-float-right {
+    float: right;
+}
+
+.raisin-black {
     background-color: #252627;
 }
 
-.alabaster{
+.alabaster {
     background-color: #F2EFE9;
 }
 
-.grey{
+.grey {
     background-color: #564E58;
 }
 
-.khaki{
+.khaki {
     background-color: #BFB48F;
 }
 
-.rose-taupe{
+.rose-taupe {
     background-color: #904E55;
 }
 
-.badge.new.rose-taupe{
+.badge.new.rose-taupe {
     background-color: #904E55;
     border-radius: 15px 50px;
 }
 
-.btn{
+.btn {
     border-radius: 25px;
 }
 
-.card-action-bgcolor{
-    background-color: #F2EFE9;    
+.card-action-bgcolor {
+    background-color: #F2EFE9;
 }
 
-.refine-menu{
+.refine-menu {
     margin-top: 15%;
 }
 
-.refine-menu li{
+.refine-menu li {
     margin-top: 10px;
 }
 
-.dropdown-content{
+.dropdown-content {
     width: max-content !important;
-    height:auto !important;
- }
+    height: auto !important;
+}
 
-
-.search-submit-button{
+.search-submit-button {
     margin: -30px;
 }
 
-.card-title-text{
+.card-title-text {
     color: #fff;
     text-decoration: none;
 }
 
-.recipe-title-text{
+.recipe-title-text {
     color: #904E55;
     text-decoration: none;
 }
 
-.fab-button{
+.fab-button {
     background-color: #904E55;
 }
 
-.nav-bgc{
+.nav-bgc {
     background-color: #564E58;
 }
 
-.body-custom{
-    /* background-color: #F2EFE9;     */
+.body-custom {
+    background-color: rgb(243, 241, 237);    
 }
 
-.strong-text{
+.strong-text {
     color: #252627;
 }
 
@@ -96,98 +99,31 @@
     margin-top: 5px;
 }
 
-.main-container{
+.main-container {
+    /* background-color: #904E55; */
     margin-top: 15px;
 }
 
 /* .fab-button{
     background-color: #904E55;
 } */
-
-.mobile-nav{
+.mobile-nav {
     margin-top: 25%;
 }
 
 /* 3rd party CSS **************************************************************/
 
-/** HoverCSS **/
-/* Shrink */
-.hvr-shrink {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-  }
-  .hvr-shrink:hover, .hvr-shrink:focus, .hvr-shrink:active {
-      -webkit-transform: scale(0.3);
-      transform: scale(0.9);
-    }
-
-    /* Grow */
-    .hvr-grow {
-        display: inline-block;
-        vertical-align: middle;
-        -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-}
-.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-  
-  /* Overline From Left */
-  .hvr-overline-from-left {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    position: relative;
-    overflow: hidden;
-  }
-  .hvr-overline-from-left:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    left: 0;
-    right: 100%;
-    top: 0;
-    background: #904E55;
-    height: 4px;
-    -webkit-transition-property: right;
-    transition-property: right;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-}
-.hvr-overline-from-left:hover:before, .hvr-overline-from-left:focus:before, .hvr-overline-from-left:active:before {
-    right: 0;
-  }
-  
-  /* Change Autocomplete styles in Chrome*/
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover, 
-  input:-webkit-autofill:focus
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
     /* border: 1px solid red; */
     background-color: #fff;
     -webkit-text-fill-color: black;
     -webkit-box-shadow: 0 0 0px 1000px #000 inset;
-    transition: background-color 5000s ease-in-out 0s pink;
-  }
+    transition: background-color 5000s ease-in-out 0s;
+}
