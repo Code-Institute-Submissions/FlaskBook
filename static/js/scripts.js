@@ -25,31 +25,31 @@ $(document).ready(function () {
 });
 
 // <!-- // Sort recipes on select change -->
-$(document).ready(function () {
-    // bind change event to select
-    $('#sort-select').on('change', function () {
-        var url = $(this).val(); // get selected value
-        if (url == 'desc') {
-            window.location = "{{url_for('recipes_time_desc')}}"; // redirect
-        }
-        if (url == 'asc') {
-            window.location = "{{url_for('recipes_time_asc')}}"; // redirect
-        }
-        if (url == 'votes-desc') {
-            window.location = "{{url_for('votes_desc')}}"; // redirect
-        }
-        if (url == 'votes-asc') {
-            window.location = "{{url_for('votes_asc')}}"; // redirect
-        }
-        if (url == 'date-desc') {
-            window.location = "{{url_for('date_desc')}}"; // redirect
-        }
-        if (url == 'date-asc') {
-            window.location = "{{url_for('date_asc')}}"; // redirect
-        }
-        return false;
-    });
-});
+// $(document).ready(function () {
+//     // bind change event to select
+//     $('#sort-select').on('change', function () {
+//         var url = $(this).val(); // get selected value
+//         if (url == 'desc') {
+//             window.location = "{{url_for('recipes_time_desc')}}"; // redirect
+//         }
+//         if (url == 'asc') {
+//             window.location = "{{url_for('recipes_time_asc')}}"; // redirect
+//         }
+//         if (url == 'votes-desc') {
+//             window.location = "{{url_for('votes_desc')}}"; // redirect
+//         }
+//         if (url == 'votes-asc') {
+//             window.location = "{{url_for('votes_asc')}}"; // redirect
+//         }
+//         if (url == 'date-desc') {
+//             window.location = "{{url_for('date_desc')}}"; // redirect
+//         }
+//         if (url == 'date-asc') {
+//             window.location = "{{url_for('date_asc')}}"; // redirect
+//         }
+//         return false;
+//     });
+// });
 
 
 

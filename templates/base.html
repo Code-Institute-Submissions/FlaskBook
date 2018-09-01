@@ -18,70 +18,74 @@
 
 <body class="body-custom">
     <header>
-        <nav class="nav-bgc">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="{{url_for('home_page')}}" class="brand-logo">Cook Book</a>
-                    <a href="#" data-activates="mobile-demo" class="button-collapse">
-                        <i class="material-icons">menu</i>
-                    </a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li>
-                            <a href="{{url_for('home_page')}}">Home</a>
-                        </li>
-                        <li>
-                            <a href="{{url_for('get_recipes')}}">Recipes</a>
-                        </li>
-                        <!-- <li>
-                            <a href="{{url_for('add_recipe')}}">New Recipe</a>
-                        </li> -->
-                        <li>
-                            <a href="{{url_for('get_cuisines')}}">Cuisines</a>
-                        </li>
-                        <!-- <li>
-                            <a href="{{url_for('add_cuisine')}}">Add cuisine</a>
-                        </li> -->
-                        <li>
-                            <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
-                                <input id="search" type="search" name="search_text" placeholder="Search" required>
-                            </form>
-                        </li>
-                        <li>
-                            <a id="sendForm" for="submit-form" class="waves-effect search-submit-button"><i class="material-icons right">search</i></a>
-
-                        </li>
-                    </ul>
-
-                    <ul class="side-nav" id="mobile-demo">
-                        <div class="mobile-nav">
+        <div class="navbar-fixed">
+            <nav class="nav-bgc">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="{{url_for('home_page')}}" class="brand-logo">Cook Book</a>
+                        <a href="#" data-activates="mobile-demo" class="button-collapse">
+                            <i class="material-icons">menu</i>
+                        </a>
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li>
                                 <a href="{{url_for('home_page')}}">Home</a>
                             </li>
                             <li>
                                 <a href="{{url_for('get_recipes')}}">Recipes</a>
                             </li>
-                            <li class="divider"></li>
                             <!-- <li>
-                                <a href="{{url_for('add_recipe')}}">New Recipe</a>
-                            </li> -->
-                            <li class="divider"></li>
+                            <a href="{{url_for('add_recipe')}}">New Recipe</a>
+                        </li> -->
                             <li>
                                 <a href="{{url_for('get_cuisines')}}">Cuisines</a>
                             </li>
+                            <!-- <li>
+                            <a href="{{url_for('add_cuisine')}}">Add cuisine</a>
+                        </li> -->
                             <li>
                                 <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
                                     <input id="search" type="search" name="search_text" placeholder="Search" required>
                                 </form>
                             </li>
                             <li>
-                                <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small"><i class="material-icons right">search</i></a>
+                                <a id="sendForm" for="submit-form" class="waves-effect search-submit-button"><i class="material-icons right">search</i></a>
 
                             </li>
-                        </div>
-                    </ul>
+                        </ul>
+
+                        <ul class="side-nav" id="mobile-demo">
+                            <div class="mobile-nav">
+                                <li>
+                                    <a href="{{url_for('home_page')}}">Home</a>
+                                </li>
+                                <li>
+                                    <a href="{{url_for('get_recipes')}}">Recipes</a>
+                                </li>
+                                <li class="divider"></li>
+                                <!-- <li>
+                                <a href="{{url_for('add_recipe')}}">New Recipe</a>
+                            </li> -->
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="{{url_for('get_cuisines')}}">Cuisines</a>
+                                </li>
+                                <li>
+                                    <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
+                                        <input id="search" type="search" name="search_text" placeholder="Search"
+                                            required>
+                                    </form>
+                                </li>
+                                <li>
+                                    <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small"><i
+                                            class="material-icons right">search</i></a>
+
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </header>
     <div class="container main-container">
         {% block recipes %} {% endblock %}

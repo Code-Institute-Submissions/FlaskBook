@@ -59,6 +59,7 @@ def insert_recipe():
         "method": recipe_method,
         "cuisine": recipe_cuisine,
         "last_modified": time.asctime( time.localtime(time.time()) ),
+        "votes": 0
         # "user": recipe_user
         # "ingredients": {
         #     "first": ingredient_1,
