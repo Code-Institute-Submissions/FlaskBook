@@ -55,30 +55,58 @@ $(document).ready(function () {
 
 // <!-- Dynamically add/remove input fields on add_recipe form -->
 $(document).ready(function () {
-    var counter = 2;
+    // $("#removeButton").hide();
+
+    var counter = 1;
+
     $("#addButton").click(function () {
+        $(".removeButtonDiv").show();
+
         if (counter > 10) {
             alert("Only 10 textboxes allow");
             return false;
         }
+
         var newTextBoxDiv = $(document.createElement('div'))
+            .attr("class", 'input-field col s12')
             .attr("id", 'TextBoxDiv' + counter);
 
-        newTextBoxDiv.after().html('<label>Textbox #' + counter + ' : </label>' +
-            '<input type="text" name="textbox' + counter +
-            '" id="textbox' + counter + '" value="" >');
+        newTextBoxDiv.after().html(
+            // '<label>Textbox #' + counter + ' : </label>' +
+            // '<input type="text" name="textbox' + counter +
+            // '" id="textbox' + counter + '" value="" >');
+            
+            '<i class="material-icons prefix">note_add</i>' +
+            
+            '<textarea class="materialize-textarea" data-length="360" name="textbox' + counter + 
+            '"type="textbox" id="textbox' + counter +'"></textarea>' +
+
+            '<label for="icon_prefix">Step ' + counter + '</label>'
+            );
+
         newTextBoxDiv.appendTo("#TextBoxesGroup");
+
+
         counter++;
     });
+
     $("#removeButton").click(function () {
+        console.log(counter)
         if (counter == 1) {
-            alert("No more textbox to remove");
+            $("#removeButton").prop('disabled', true);         
             return false;
+        } if (counter <= 2) {
+            $("#removeButton").hide();
         }
+
         counter--;
+
         $("#TextBoxDiv" + counter).remove();
+
     });
+
     $("#getButtonValue").click(function () {
+
         var msg = '';
         for (i = 1; i < counter; i++) {
             msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
