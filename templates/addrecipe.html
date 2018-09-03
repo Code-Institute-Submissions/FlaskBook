@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% block add_recipe %}
 <!-- <h3>Add Recipe</h3> -->
+
 <div class="container">
     <div class="row">
-        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s7 offset-s2 add-recipe-form">
+        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12 l7 offset-l2 add-recipe-form">
             <div class="row">
                 <h5>Add a new recipe</h5>
                 <hr>
@@ -23,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="input-field col s4">
+                <div class="input-field col s12 l4">
                     <select id="cuisine_name" name="cuisine">
                         <option value="" disabled selected>Choose cuisine</option>
                         {% for cuisine in cuisines %}
@@ -32,7 +33,7 @@
                     </select>
                 </div>
                 <!-- User -->
-                <div class="input-field col s4 offset-s4">
+                <div class="input-field col s12 l4 offset-l4">
                     <select id="user_name" name="user">
                         <option value="" disabled selected>User</option>
                         {% for user in users %}
@@ -51,48 +52,50 @@
 
                 <!-- Ingredients -->
                 <!-- <div class="row">
-                <div class="input-field col s6 l3">
-                    <i class="material-icons prefix">shopping_cart</i>
-                    <input id="ingredient_name" name="ingredient1" type="text">
-                    <label for="icon_prefix">Ingredients:</label>
-                </div>
-                <div class="input-field col s6 l3">
-                    <i class="material-icons prefix">shopping_cart</i>
-                    <input id="ingredient_name" name="ingredient2" type="text">
-                    <label for="icon_prefix">Ingredients:</label>
-                </div>
-                <div class="input-field col s6 l3">
-                    <i class="material-icons prefix">shopping_cart</i>
-                    <input id="ingredient_name" name="ingredient3" type="text">
-                    <label for="icon_prefix">Ingredients:</label>
-                </div>
-                <div class="input-field col s6 l3">
-                    <i class="material-icons prefix">shopping_cart</i>
-                    <input id="ingredient_name" name="ingredient4" type="text">
-                    <label for="icon_prefix">Ingredients:</label>
-                </div>
-            </div> -->
+                    <div class="input-field col s6 l3">
+                        <i class="material-icons prefix">shopping_cart</i>
+                        <input id="ingredient_name" name="ingredient1" type="text">
+                        <label for="icon_prefix">Ingredients:</label>
+                    </div>
+                    <div class="input-field col s6 l3">
+                        <i class="material-icons prefix">shopping_cart</i>
+                        <input id="ingredient_name" name="ingredient2" type="text">
+                        <label for="icon_prefix">Ingredients:</label>
+                    </div>
+                    <div class="input-field col s6 l3">
+                        <i class="material-icons prefix">shopping_cart</i>
+                        <input id="ingredient_name" name="ingredient3" type="text">
+                        <label for="icon_prefix">Ingredients:</label>
+                    </div>
+                    <div class="input-field col s6 l3">
+                        <i class="material-icons prefix">shopping_cart</i>
+                        <input id="ingredient_name" name="ingredient4" type="text">
+                        <label for="icon_prefix">Ingredients:</label>
+                    </div>
+                </div> -->
                 <!-- Allergens -->
                 <!-- <div class="input-field col s6 l6">
-                <i class="material-icons prefix">warning</i>
-                <select multiple id="allergens" name="allergens[]">
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>    
-                </select>
-            </div> -->
+                    <i class="material-icons prefix">warning</i>
+                    <select multiple id="allergens" name="allergens[]">
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>    
+                    </select>
+                </div> -->
 
                 <!-- <div class="row">
-                <div class="switch">
-                    <label>
-                        <input id="is_urgent" name="is_urgent" type="checkbox">
-                        <span class="lever"></span>
-                        Is Urgent
-                    </label>
-                </div>
-            </div> -->
+                    <div class="switch">
+                        <label>
+                            <input id="is_urgent" name="is_urgent" type="checkbox">
+                            <span class="lever"></span>
+                            Is Urgent
+                        </label>
+                    </div>
+                </div> -->
 
             </div>
         </form>
     </div>
-    {% endblock %}
+</div>
+
+{% endblock %}

@@ -78,7 +78,7 @@
     </header>
 
     {% block recipes %} {% endblock %}
-    <div class="container">
+    
         {% block add_recipe %} {% endblock %}
         {% block edit_recipe %} {% endblock %}
         {% block cuisines %} {% endblock %}
@@ -91,7 +91,7 @@
         {% block dessert %} {% endblock %}
         {% block snack %} {% endblock %}
         {% block light_bites %} {% endblock %}
-    </div>
+    
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large red fab-button">
             <i class="large material-icons fab-button">mode_edit</i>
@@ -196,7 +196,7 @@
         $(document).ready(function () {
             // $("#removeButton").hide();
 
-            var counter = 1;
+            var counter = 2;
 
             $("#addButton").click(function () {
                 $(".removeButtonDiv").show();
@@ -370,6 +370,8 @@
     crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script> -->
+
 </body>
+
 
 </html>

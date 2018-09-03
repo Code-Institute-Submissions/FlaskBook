@@ -1,3 +1,10 @@
+.card-action.card-action-icons{
+    padding: 1px;
+}
+
+.float-right{
+    float:right;
+}
 .add-recipe-submit-btns{
     margin-top: 40vh;
 }
