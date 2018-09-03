@@ -12,60 +12,49 @@
         crossorigin="anonymous"> -->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/hover.css')}}" type="text/css" />
 </head>
 
 <body class="body-custom">
     <header>
-            <nav class="nav-bgc">
-                <div class="container">
-                    <div class="nav-wrapper">
-                        <a href="{{url_for('home_page')}}" class="brand-logo">Cook Book</a>
-                        <a href="#" data-activates="mobile-demo" class="button-collapse">
-                            <i class="material-icons">menu</i>
-                        </a>
-                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <nav class="nav-bgc">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="{{url_for('home_page')}}" class="brand-logo">Cook Book</a>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li>
+                            <a href="{{url_for('home_page')}}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{{url_for('get_recipes')}}">Recipes</a>
+                        <li>
+                            <a href="{{url_for('get_cuisines')}}">Cuisines</a>
+                        <li>
+                            <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
+                                <input id="autocomplete-input" class="autocomplete" type="search" name="search_text"
+                                    placeholder="Search" required>
+                            </form>
+                        </li>
+                        <li>
+                            <a id="sendForm" for="submit-form" class="waves-effect search-submit-button"><i class="material-icons right">search</i></a>
+
+                        </li>
+                    </ul>
+
+                    <ul class="side-nav" id="mobile-demo">
+                        <div class="mobile-nav">
                             <li>
                                 <a href="{{url_for('home_page')}}">Home</a>
                             </li>
                             <li>
                                 <a href="{{url_for('get_recipes')}}">Recipes</a>
                             </li>
-                            <!-- <li>
-                            <a href="{{url_for('add_recipe')}}">New Recipe</a>
-                        </li> -->
-                            <li>
-                                <a href="{{url_for('get_cuisines')}}">Cuisines</a>
-                            </li>
-                            <!-- <li>
-                            <a href="{{url_for('add_cuisine')}}">Add cuisine</a>
-                        </li> -->
-                            <li>
-                                <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
-                                    <input id="autocomplete-input" class="autocomplete" type="search" name="search_text"
-                                        placeholder="Search" required>
-                                </form>
-                            </li>
-                            <li>
-                                <a id="sendForm" for="submit-form" class="waves-effect search-submit-button"><i class="material-icons right">search</i></a>
-
-                            </li>
-                        </ul>
-
-                        <ul class="side-nav" id="mobile-demo">
-                            <div class="mobile-nav">
-                                <li>
-                                    <a href="{{url_for('home_page')}}">Home</a>
-                                </li>
-                                <li>
-                                    <a href="{{url_for('get_recipes')}}">Recipes</a>
-                                </li>
-                                <li class="divider"></li>
-                                <!-- <li>
-                                <a href="{{url_for('add_recipe')}}">New Recipe</a>
-                            </li> -->
+                            <a>
                                 <li class="divider"></li>
                                 <li>
                                     <a href="{{url_for('get_cuisines')}}">Cuisines</a>
@@ -81,14 +70,15 @@
                                             class="material-icons right">search</i></a>
 
                                 </li>
-                            </div>
-                        </ul>
-                    </div>
+                        </div>
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
     </header>
-    <div class="container main-container">
-        {% block recipes %} {% endblock %}
+
+    {% block recipes %} {% endblock %}
+    <div class="container">
         {% block add_recipe %} {% endblock %}
         {% block edit_recipe %} {% endblock %}
         {% block cuisines %} {% endblock %}
@@ -119,8 +109,20 @@
             </li>
         </ul>
     </div>
+
+
+
+    <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+
+    <!-- Font awesome -->
+    <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
+
+    <!-- Dynamically add/remove input fields on add_recipe form -->
+    <!-- <script src="/static/js/scripts.js"></script> -->
 
     <!-- Materialize CSS init's -->
     <script type="text/javascript">
@@ -130,6 +132,13 @@
             $(".button-collapse").sideNav();
             $('.fixed-action-btn').floatingActionButton();
             $('.dropdown-trigger').dropdown();
+            $('.materialboxed').materialbox();
+            $('.slider').slider({
+                full_width: true
+            })
+            $('.carousel.carousel-slider').carousel({
+                full_width: true
+            });
         });
         $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
@@ -183,18 +192,184 @@
         });
     </script>
 
-    <!-- Dynamically add/remove input fields on add_recipe form -->
-    <script src="/static/js/scripts.js"></script>
+    <script>
+        $(document).ready(function () {
+            // $("#removeButton").hide();
 
-    <script src="https://use.fontawesome.com/d46ec8e634.js"></script>
+            var counter = 1;
+
+            $("#addButton").click(function () {
+                $(".removeButtonDiv").show();
+
+                if (counter > 10) {
+                    alert("Only 10 textboxes allow");
+                    return false;
+                }
+
+                var newTextBoxDiv = $(document.createElement('div'))
+                    .attr("class", 'input-field col s12')
+                    .attr("id", 'TextBoxDiv' + counter);
+
+                newTextBoxDiv.after().html(
+                    // '<label>Textbox #' + counter + ' : </label>' +
+                    // '<input type="text" name="textbox' + counter +
+                    // '" id="textbox' + counter + '" value="" >');
+                    
+
+                    '<textarea class="materialize-textarea" data-length="360" name="textbox' +
+                    counter +
+                    '"type="textbox" id="textbox' + counter + '"></textarea>' +
+
+                    '<label for="icon_prefix">Step ' + counter + '</label>'
+                );
+
+                newTextBoxDiv.appendTo("#TextBoxesGroup");
+
+
+                counter++;
+            });
+
+            $("#removeButton").click(function () {
+                console.log(counter)
+                if (counter == 1) {
+                    $("#removeButton").prop('disabled', true);
+                    return false;
+                }
+                if (counter <= 2) {
+                    $("#removeButton").hide();
+                }
+
+                counter--;
+
+                $("#TextBoxDiv" + counter).remove();
+
+            });
+
+            $("#getButtonValue").click(function () {
+
+                var msg = '';
+                for (i = 1; i < counter; i++) {
+                    msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+                }
+                alert(msg);
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('input.autocomplete').autocomplete({
+                data: {
+                    "salt": null,
+                    "pepper": null,
+                    "oil": null,
+                    "flour": null,
+                    "garlic": null,
+                    "sugar": null,
+                    "water": null,
+                    "onion": null,
+                    "olive": null,
+                    "chicken": null,
+                    "juice": null,
+                    "milk": null,
+                    "lemon": null,
+                    "butter": null,
+                    "egg": null,
+                    "cheese": null,
+                    "wheat": null,
+                    "vegetable": null,
+                    "vanilla": null,
+                    "vinegar": null,
+                    "parsley": null,
+                    "honey": null,
+                    "soy": null,
+                    "wine": null,
+                    "seeds": null,
+                    "celery": null,
+                    "rice": null,
+                    "cinnamon": null,
+                    "tomato": null,
+                    "bread": null,
+                    "eggs": null,
+                    "onions": null,
+                    "yeast": null,
+                    "leaves": null,
+                    "broth": null,
+                    "tomatoes": null,
+                    "cream": null,
+                    "cloves": null,
+                    "thyme": null,
+                    "peeled": null,
+                    "ginger": null,
+                    "beans": null,
+                    "soda": null,
+                    "basil": null,
+                    "mushrooms": null,
+                    "apple": null,
+                    "parmesan": null,
+                    "yogurt": null,
+                    "stock": null,
+                    "bell": null,
+                    "oats": null,
+                    "sodium": null,
+                    "beef": null,
+                    "flakes": null,
+                    "carrot": null,
+                    "oregano": null,
+                    "chocolate": null,
+                    "cumin": null,
+                    "paprika": null,
+                    "sesame": null,
+                    "mustard": null,
+                    "spinach": null,
+                    "corn": null,
+                    "potatoes": null,
+                    "coconut": null,
+                    "carrots": null,
+                    "nutmeg": null,
+                    "cilantro": null,
+                    "raisins": null,
+                    "chili": null,
+                    "syrup": null,
+                    "peas": null,
+                    "peanut": null,
+                    "almond": null,
+                    "walnuts": null,
+                    "canned": null,
+                    "lime": null,
+                    "leaf": null,
+                    "pineapple": null,
+                    "margarine": null,
+                    "cabbage": null,
+                    "cucumber": null,
+                    "broccoli": null,
+                    "cornstarch": null,
+                    "zucchini": null,
+                    "coriander": null,
+                    "paste": null,
+                    "turkey": null,
+                    "banana": null,
+                    "almonds": null,
+                    "nuts": null,
+                    "maple": null,
+                    "cheddar": null,
+                    "cider": null,
+                    "scallions": null,
+                    "dill": null,
+                    "lettuce": null
+                },
+            });
+        });
+    </script>
+
 
     <!-- Bootstrap V4 -->
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script> -->
+    crossorigin="anonymous"></script> -->
 </body>
 
 </html>

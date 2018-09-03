@@ -1,28 +1,28 @@
 // <!-- Materialize CSS init's -->
-$(document).ready(function () {
-    $('.collapsible').collapsible();
-    $('select').material_select();
-    $(".button-collapse").sideNav();
-    $('.fixed-action-btn').floatingActionButton();
-    $('.dropdown-trigger').dropdown();
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15, // Creates a dropdown of 15 years to control year,
-        today: 'Today',
-        clear: 'Clear',
-        close: 'Ok',
-        closeOnSelect: false // Close upon selecting a date,
-    });
-});
+// $(document).ready(function () {
+//     $('.collapsible').collapsible();
+//     $('select').material_select();
+//     $(".button-collapse").sideNav();
+//     $('.fixed-action-btn').floatingActionButton();
+//     $('.dropdown-trigger').dropdown();
+//     $('.datepicker').pickadate({
+//         selectMonths: true, // Creates a dropdown to control month
+//         selectYears: 15, // Creates a dropdown of 15 years to control year,
+//         today: 'Today',
+//         clear: 'Clear',
+//         close: 'Ok',
+//         closeOnSelect: false // Close upon selecting a date,
+//     });
+// });
 
 // <!-- Submit search form on click search icon -->
-$(document).ready(function () {
-    $("#sendForm").click(function () {
-        if ($('#sendFrom').html() != '') {
-            $("#search-form").submit();
-        }
-    });
-});
+// $(document).ready(function () {
+//     $("#sendForm").click(function () {
+//         if ($('#sendFrom').html() != '') {
+//             $("#search-form").submit();
+//         }
+//     });
+// });
 
 // <!-- // Sort recipes on select change -->
 // $(document).ready(function () {
@@ -54,169 +54,169 @@ $(document).ready(function () {
 
 
 // <!-- Dynamically add/remove input fields on add_recipe form -->
-$(document).ready(function () {
-    // $("#removeButton").hide();
+// $(document).ready(function () {
+//     // $("#removeButton").hide();
 
-    var counter = 1;
+//     var counter = 1;
 
-    $("#addButton").click(function () {
-        $(".removeButtonDiv").show();
+//     $("#addButton").click(function () {
+//         $(".removeButtonDiv").show();
 
-        if (counter > 10) {
-            alert("Only 10 textboxes allow");
-            return false;
-        }
+//         if (counter > 10) {
+//             alert("Only 10 textboxes allow");
+//             return false;
+//         }
 
-        var newTextBoxDiv = $(document.createElement('div'))
-            .attr("class", 'input-field col s12')
-            .attr("id", 'TextBoxDiv' + counter);
+//         var newTextBoxDiv = $(document.createElement('div'))
+//             .attr("class", 'input-field col s12')
+//             .attr("id", 'TextBoxDiv' + counter);
 
-        newTextBoxDiv.after().html(
-            // '<label>Textbox #' + counter + ' : </label>' +
-            // '<input type="text" name="textbox' + counter +
-            // '" id="textbox' + counter + '" value="" >');
+//         newTextBoxDiv.after().html(
+//             // '<label>Textbox #' + counter + ' : </label>' +
+//             // '<input type="text" name="textbox' + counter +
+//             // '" id="textbox' + counter + '" value="" >');
 
-            '<i class="material-icons prefix">note_add</i>' +
+//             '<i class="material-icons prefix">note_add</i>' +
 
-            '<textarea class="materialize-textarea" data-length="360" name="textbox' + counter +
-            '"type="textbox" id="textbox' + counter + '"></textarea>' +
+//             '<textarea class="materialize-textarea" data-length="360" name="textbox' + counter +
+//             '"type="textbox" id="textbox' + counter + '"></textarea>' +
 
-            '<label for="icon_prefix">Step ' + counter + '</label>'
-        );
+//             '<label for="icon_prefix">Step ' + counter + '</label>'
+//         );
 
-        newTextBoxDiv.appendTo("#TextBoxesGroup");
+//         newTextBoxDiv.appendTo("#TextBoxesGroup");
 
 
-        counter++;
-    });
+//         counter++;
+//     });
 
-    $("#removeButton").click(function () {
-        console.log(counter)
-        if (counter == 1) {
-            $("#removeButton").prop('disabled', true);
-            return false;
-        }
-        if (counter <= 2) {
-            $("#removeButton").hide();
-        }
+//     $("#removeButton").click(function () {
+//         console.log(counter)
+//         if (counter == 1) {
+//             $("#removeButton").prop('disabled', true);
+//             return false;
+//         }
+//         if (counter <= 2) {
+//             $("#removeButton").hide();
+//         }
 
-        counter--;
+//         counter--;
 
-        $("#TextBoxDiv" + counter).remove();
+//         $("#TextBoxDiv" + counter).remove();
 
-    });
+//     });
 
-    $("#getButtonValue").click(function () {
+//     $("#getButtonValue").click(function () {
 
-        var msg = '';
-        for (i = 1; i < counter; i++) {
-            msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
-        }
-        alert(msg);
-    });
-});
+//         var msg = '';
+//         for (i = 1; i < counter; i++) {
+//             msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+//         }
+//         alert(msg);
+//     });
+// });
 
 // Autocomplete search field
-$(document).ready(function () {
-    $('input.autocomplete').autocomplete({
-        data: {
-            "salt": null,
-            "pepper": null,
-            "oil": null,
-            "flour": null,
-            "garlic": null,
-            "sugar": null,
-            "water": null,
-            "onion": null,
-            "olive": null,
-            "chicken": null,
-            "juice": null,
-            "milk": null,
-            "lemon": null,
-            "butter": null,
-            "egg": null,
-            "cheese": null,
-            "wheat": null,
-            "vegetable": null,
-            "vanilla": null,
-            "vinegar": null,
-            "parsley": null,
-            "honey": null,
-            "soy": null,
-            "wine": null,
-            "seeds": null,
-            "celery": null,
-            "rice": null,
-            "cinnamon": null,
-            "tomato": null,
-            "bread": null,
-            "eggs": null,
-            "onions": null,
-            "yeast": null,
-            "leaves": null,
-            "broth": null,
-            "tomatoes": null,
-            "cream": null,
-            "cloves": null,
-            "thyme": null,
-            "peeled": null,
-            "ginger": null,
-            "beans": null,
-            "soda": null,
-            "basil": null,
-            "mushrooms": null,
-            "apple": null,
-            "parmesan": null,
-            "yogurt": null,
-            "stock": null,
-            "bell": null,
-            "oats": null,
-            "sodium": null,
-            "beef": null,
-            "flakes": null,
-            "carrot": null,
-            "oregano": null,
-            "chocolate": null,
-            "cumin": null,
-            "paprika": null,
-            "sesame": null,
-            "mustard": null,
-            "spinach": null,
-            "corn": null,
-            "potatoes": null,
-            "coconut": null,
-            "carrots": null,
-            "nutmeg": null,
-            "cilantro": null,
-            "raisins": null,
-            "chili": null,
-            "syrup": null,
-            "peas": null,
-            "peanut": null,
-            "almond": null,
-            "walnuts": null,
-            "canned": null,
-            "lime": null,
-            "leaf": null,
-            "pineapple": null,
-            "margarine": null,
-            "cabbage": null,
-            "cucumber": null,
-            "broccoli": null,
-            "cornstarch": null,
-            "zucchini": null,
-            "coriander": null,
-            "paste": null,
-            "turkey": null,
-            "banana": null,
-            "almonds": null,
-            "nuts": null,
-            "maple": null,
-            "cheddar": null,
-            "cider": null,
-            "scallions": null,
-            "dill": null,
-            "lettuce": null
-        },
-    });
-});
+// $(document).ready(function () {
+//     $('input.autocomplete').autocomplete({
+//         data: {
+//             "salt": null,
+//             "pepper": null,
+//             "oil": null,
+//             "flour": null,
+//             "garlic": null,
+//             "sugar": null,
+//             "water": null,
+//             "onion": null,
+//             "olive": null,
+//             "chicken": null,
+//             "juice": null,
+//             "milk": null,
+//             "lemon": null,
+//             "butter": null,
+//             "egg": null,
+//             "cheese": null,
+//             "wheat": null,
+//             "vegetable": null,
+//             "vanilla": null,
+//             "vinegar": null,
+//             "parsley": null,
+//             "honey": null,
+//             "soy": null,
+//             "wine": null,
+//             "seeds": null,
+//             "celery": null,
+//             "rice": null,
+//             "cinnamon": null,
+//             "tomato": null,
+//             "bread": null,
+//             "eggs": null,
+//             "onions": null,
+//             "yeast": null,
+//             "leaves": null,
+//             "broth": null,
+//             "tomatoes": null,
+//             "cream": null,
+//             "cloves": null,
+//             "thyme": null,
+//             "peeled": null,
+//             "ginger": null,
+//             "beans": null,
+//             "soda": null,
+//             "basil": null,
+//             "mushrooms": null,
+//             "apple": null,
+//             "parmesan": null,
+//             "yogurt": null,
+//             "stock": null,
+//             "bell": null,
+//             "oats": null,
+//             "sodium": null,
+//             "beef": null,
+//             "flakes": null,
+//             "carrot": null,
+//             "oregano": null,
+//             "chocolate": null,
+//             "cumin": null,
+//             "paprika": null,
+//             "sesame": null,
+//             "mustard": null,
+//             "spinach": null,
+//             "corn": null,
+//             "potatoes": null,
+//             "coconut": null,
+//             "carrots": null,
+//             "nutmeg": null,
+//             "cilantro": null,
+//             "raisins": null,
+//             "chili": null,
+//             "syrup": null,
+//             "peas": null,
+//             "peanut": null,
+//             "almond": null,
+//             "walnuts": null,
+//             "canned": null,
+//             "lime": null,
+//             "leaf": null,
+//             "pineapple": null,
+//             "margarine": null,
+//             "cabbage": null,
+//             "cucumber": null,
+//             "broccoli": null,
+//             "cornstarch": null,
+//             "zucchini": null,
+//             "coriander": null,
+//             "paste": null,
+//             "turkey": null,
+//             "banana": null,
+//             "almonds": null,
+//             "nuts": null,
+//             "maple": null,
+//             "cheddar": null,
+//             "cider": null,
+//             "scallions": null,
+//             "dill": null,
+//             "lettuce": null
+//         },
+//     });
+// });

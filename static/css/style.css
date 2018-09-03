@@ -1,4 +1,21 @@
-.container{
+.add-recipe-submit-btns{
+    margin-top: 40vh;
+}
+
+.add-recipe-form{
+    margin-top: 5vh;
+}
+
+.carousel-slider {
+    height: 400px !important;
+}
+
+
+.dropdown-content {
+    position: absolute !important;
+}
+
+.container {
     min-width: 85%;
 }
 
@@ -80,7 +97,7 @@
 }
 
 .body-custom {
-    background-color: rgb(243, 241, 237);    
+    background-color: rgb(243, 241, 237);
 }
 
 .strong-text {
@@ -112,7 +129,6 @@
 }
 
 /* 3rd party CSS **************************************************************/
-
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
