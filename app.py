@@ -1,3 +1,4 @@
+# Import neccessary modules
 import os
 import datetime, time
 from flask import Flask, render_template, redirect, request, url_for
@@ -5,12 +6,16 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 
+
+
 app = Flask(__name__)
-app.config["MONGO_DBNAME"] = 'testmenudb'
+# Set app variables
+app.config["MONGO_DBNAME"] = os.getenv("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 
 mongo = PyMongo(app)
 
+# Homepage route
 @app.route('/')
 def home_page():
     return render_template("home.html")
@@ -27,50 +32,55 @@ def get_recipes():
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('addrecipe.html',
-    users=mongo.db.users.find(),
-    allergens=mongo.db.allergens.find(),
-    cuisines=mongo.db.cuisine.find())
+    users=mongo.db.users.find(), cuisines=mongo.db.cuisine.find())
 
 # Submit add recipe form    
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipes =  mongo.db.recipes
-    recipe_title = request.form["title"]
-    recipe_method = request.form["method"]
-    recipe_cuisine =  request.form["cuisine"]
-    # recipe_user = request.form["user"]
-    
-    # ingredient_1 = request.form["ingredient1"]
-    # ingredient_2 = request.form["ingredient2"]
-    # ingredient_3 = request.form["ingredient3"]
-    # ingredient_4 = request.form["ingredient4"]
-    
-    #  FIXME: allergen list not being passed 
-    # allergen_1 = request.form["allergen1"]
-    # allergen_2 = request.form["allergen2"]
-    # allergen_3 = request.form["allergen3"]
-    # allergen_4 = request.form["allergen4"]
-    # allergens = request.form.getlist("allergens", None)
-    # print("Allergens are: ", allergens)
-    # recipe_author = request.form["author"]
 
+    recipe_title = request.form['title']
+    recipe_method = request.form['method']
+    recipe_method2 = request.form['method2']
+    recipe_method3 = request.form['method3']
+    recipe_method4 = request.form['method4']
+    recipe_method5 = request.form['method5']
+    recipe_method6 = request.form['method6']
+    recip_cuisine = request.form['cuisine']
+    recipe_user = request.form['user']
+    
     recipe_form = {
         "title": recipe_title,
-        "method": recipe_method,
-        "cuisine": recipe_cuisine,
-        "last_modified": time.asctime( time.localtime(time.time()) ),
-        "votes": 0
-        # "user": recipe_user
-        # "ingredients": {
-        #     "first": ingredient_1,
-        #     "second": ingredient_2,
-        #     "third": ingredient_3,
-        #     "fourth": ingredient_4,
-        # },
-        # "allergens": allergens
+        "methods": [
+            {
+                "step": recipe_method
+            },
+            {
+                "step": recipe_method2
+            },
+            {
+                "step": recipe_method3
+            },
+            {
+                "step": recipe_method4
+            },
+            {
+                "step": recipe_method5
+            },
+            {
+                "step": recipe_method6
+            }
+        ],
+        "cuisine": recip_cuisine,
+        "user": recipe_user
     }
     print(recipe_form)
     recipes.insert_one(recipe_form)
+
+    # recipes.insert_one(request.form.to_dict(flat=False))
+    # recipes.insert_one(request.form.to_dict())
+    # print(recipe_form)
+    # recipes.insert_one(recipe_form)
     return redirect(url_for('get_recipes'))
 
 # Edit recipe form
@@ -79,7 +89,8 @@ def edit_recipe(recipe_id):
     the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     cuisines =  mongo.db.cuisine.find()
     users = mongo.db.users.find()
-    return render_template('editrecipe.html', recipe=the_recipe, cuisines=cuisines, users=users)
+    return render_template('editrecipe.html', 
+            recipe=the_recipe, cuisines=cuisines, users=users)
 
 
 # Submit edit recipe form
@@ -130,25 +141,29 @@ def recipe_single(recipe_id):
 # by Cooking-time descending
 @app.route('/recipes_time_desc')
 def recipes_time_desc():
-    col_sorted_desc = mongo.db.recipes.find({"cooking-time": {"$gt": 0}}).sort([("cooking-time", -1)])
+    col_sorted_desc = mongo.db.recipes.find(
+        {"cooking-time": {"$gt": 0}}).sort([("cooking-time", -1)])
     return render_template("recipes.html", recipes=col_sorted_desc)
 
 # by Cooking-time ascending
 @app.route('/recipes_time_asc')
 def recipes_time_asc():
-    col_sorted_asc = mongo.db.recipes.find({"cooking-time": {"$gt": 0}}).sort([("cooking-time", 1)])
+    col_sorted_asc = mongo.db.recipes.find(
+        {"cooking-time": {"$gt": 0}}).sort([("cooking-time", 1)])
     return render_template("recipes.html", recipes=col_sorted_asc)
 
 # by Votes descending
 @app.route('/votes_desc')
 def votes_desc():
-    col_sorted_votes_desc = mongo.db.recipes.find({"votes": {"$gt": -1}}).sort([("votes", -1)])
+    col_sorted_votes_desc = mongo.db.recipes.find(
+        {"votes": {"$gt": -1}}).sort([("votes", -1)])
     return render_template("recipes.html", recipes=col_sorted_votes_desc)
 
 # by Votes ascending
 @app.route('/votes_asc')
 def votes_asc():
-    col_sorted_votes_asc = mongo.db.recipes.find({"votes": {"$gt": -1}}).sort([("votes", 1)])
+    col_sorted_votes_asc = mongo.db.recipes.find(
+        {"votes": {"$gt": -1}}).sort([("votes", 1)])
     return render_template("recipes.html", recipes=col_sorted_votes_asc)
 
 # by Date descending
@@ -171,32 +186,38 @@ def date_asc():
 # Breakfast meals
 @app.route('/breakfast_meals')
 def breakfast_meals():        
-    return render_template("breakfast.html", recipes=mongo.db.recipes.find({"meal":"breakfast"}))
+    return render_template("breakfast.html", 
+            recipes=mongo.db.recipes.find({"meal":"breakfast"}))
 
 # Lunch meals
 @app.route('/lunch_meals')
 def lunch_meals():
-    return render_template("lunch.html", recipes=mongo.db.recipes.find({"meal":"lunch"}))
+    return render_template("lunch.html", 
+            recipes=mongo.db.recipes.find({"meal":"lunch"}))
 
 # Dinner meals
 @app.route('/dinner_meals')
 def dinner_meals():
-    return render_template("dinner.html", recipes=mongo.db.recipes.find({"meal":"dinner"}))
+    return render_template("dinner.html", 
+            recipes=mongo.db.recipes.find({"meal":"dinner"}))
 
 # Dessert meals
 @app.route('/dessert_meals')
 def dessert_meals():
-    return render_template("dessert.html", recipes=mongo.db.recipes.find({"meal":"dessert"}))
+    return render_template("dessert.html", 
+            recipes=mongo.db.recipes.find({"meal":"dessert"}))
 
 # Snack meals
 @app.route('/snack_meals')
 def snack_meals():
-    return render_template("snack.html", recipes=mongo.db.recipes.find({"meal":"snack"}))
+    return render_template("snack.html", 
+            recipes=mongo.db.recipes.find({"meal":"snack"}))
 
 # Ligt-bites meals
 @app.route('/lightbites_meals')
 def lightbites_meals():
-    return render_template("light-bites.html", recipes=mongo.db.recipes.find({"meal":"light-bites"}))
+    return render_template("light-bites.html", 
+            recipes=mongo.db.recipes.find({"meal":"light-bites"}))
 # Cuisines *********************************************************************
 
 # Get cuisines route
@@ -241,16 +262,10 @@ def add_cuisine():
         cuisines=mongo.db.cuisine.find())
 
 # Submit add cuisine form
-@app.route('/insert_cuisine/<recipe_id>', methods=["POST"])
+@app.route('/insert_cuisine', methods=["POST"])
 def insert_cuisine():
     cuisines = mongo.db.cuisine
-    cuisine_name = request.form['cuisine_name']
-    
-    cuisine_form = {
-        'cuisine_name': cuisine_name
-    }
-
-    cuisines.insert_one(cuisine_form)
+    cuisines.insert_one(request.form.to_dict())
     return redirect(url_for('get_cuisines'))
 
 # Users ************************************************************************
@@ -280,18 +295,21 @@ def downvote_recipe(recipe_id):
     return redirect(url_for('get_recipes'))
 
 
-# Searching  *******************************************************************
-
+# Search  **********************************************************************
 # Search term from search box
 @app.route('/search_box/', methods=["POST"])
 def search_box():
     search_term = request.form['search_text']    
-    return redirect(url_for('search_results', search_text=search_term))
+    if (search_term != ''):
+        return redirect(url_for('search_results', search_text=search_term))
+    else:
+        return render_template("recipes.html", recipes=mongo.db.recipes.find())
 
 # Search results route
 @app.route('/search_results/<search_text>')
 def search_results(search_text):
-    search_results = mongo.db.recipes.find({'$text': { '$search': search_text }})
+    search_results = mongo.db.recipes.find(
+        {'$text': { '$search': search_text }})
     # for item in search_results:
     #     print("Search results: ", item)    
     return render_template("search-results.html", recipes=search_results)

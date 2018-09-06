@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+body{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
 .card-action.card-action-icons{
     padding: 1px;
 }
@@ -6,7 +13,7 @@
     float:right;
 }
 .add-recipe-submit-btns{
-    margin-top: 40vh;
+    margin-top: 10vh;
 }
 
 .add-recipe-form{

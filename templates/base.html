@@ -77,26 +77,28 @@
         </nav>
     </header>
 
+
     {% block recipes %} {% endblock %}
-    
-        {% block add_recipe %} {% endblock %}
-        {% block edit_recipe %} {% endblock %}
-        {% block cuisines %} {% endblock %}
-        {% block add_cuisine %} {% endblock %}
-        {% block edit_cuisine %} {% endblock %}
-        {% block recipe_single %} {% endblock %}
-        {% block breakfast %} {% endblock %}
-        {% block lunch %} {% endblock %}
-        {% block dinner %} {% endblock %}
-        {% block dessert %} {% endblock %}
-        {% block snack %} {% endblock %}
-        {% block light_bites %} {% endblock %}
-    
+    {% block add_recipe %} {% endblock %}
+    {% block edit_recipe %} {% endblock %}
+    {% block cuisines %} {% endblock %}
+    {% block add_cuisine %} {% endblock %}
+    {% block edit_cuisine %} {% endblock %}
+    {% block search_results %} {% endblock %}
+    {% block recipe_single %} {% endblock %}
+    {% block breakfast %} {% endblock %}
+    {% block lunch %} {% endblock %}
+    {% block dinner %} {% endblock %}
+    {% block dessert %} {% endblock %}
+    {% block snack %} {% endblock %}
+    {% block light_bites %} {% endblock %}
+
+
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red fab-button">
+        <a class="btn-floating btn-large red fab-button" href="{{url_for('add_recipe')}}">
             <i class="large material-icons fab-button">mode_edit</i>
         </a>
-        <ul>
+        <!-- <ul>
             <li>
                 <a class="btn-floating green" href="{{url_for('add_cuisine')}}">
                     <i class="fa fa-book" aria-hidden="true"></i>
@@ -107,7 +109,7 @@
                     <i class="fa fa-cutlery" aria-hidden="true"></i>
                 </a>Recipe
             </li>
-        </ul>
+        </ul> -->
     </div>
 
 
@@ -194,65 +196,91 @@
 
     <script>
         $(document).ready(function () {
-            // $("#removeButton").hide();
+            var methodCounter = 2;
+            $("#addMethod").click(function () {
+                $(".removeMethodDiv").show();
 
-            var counter = 2;
-
-            $("#addButton").click(function () {
-                $(".removeButtonDiv").show();
-
-                if (counter > 10) {
-                    alert("Only 10 textboxes allow");
+                if (methodCounter > 10) {
+                    alert("Only 10 steps allowed");
                     return false;
                 }
 
                 var newTextBoxDiv = $(document.createElement('div'))
                     .attr("class", 'input-field col s12')
-                    .attr("id", 'TextBoxDiv' + counter);
+                    .attr("id", 'TextBoxDivMethods' + methodCounter);
 
                 newTextBoxDiv.after().html(
-                    // '<label>Textbox #' + counter + ' : </label>' +
-                    // '<input type="text" name="textbox' + counter +
-                    // '" id="textbox' + counter + '" value="" >');
-                    
-
-                    '<textarea class="materialize-textarea" data-length="360" name="textbox' +
-                    counter +
-                    '"type="textbox" id="textbox' + counter + '"></textarea>' +
-
-                    '<label for="icon_prefix">Step ' + counter + '</label>'
+                    '<textarea class="materialize-textarea" data-length="360" type="textbox" id="textbox' +
+                    methodCounter + '"name="method' + methodCounter + '"></textarea>' +
+                    '<label for="icon_prefix">Step ' + methodCounter + '</label>'
                 );
-
-                newTextBoxDiv.appendTo("#TextBoxesGroup");
-
-
-                counter++;
+                newTextBoxDiv.appendTo("#TextBoxDivMethods");
+                methodCounter++;
             });
 
-            $("#removeButton").click(function () {
-                console.log(counter)
-                if (counter == 1) {
-                    $("#removeButton").prop('disabled', true);
+            $("#removeMethod").click(function () {
+                console.log(methodCounter)
+                if (methodCounter <= 1) {
+                    $("#removeMethod").prop('disabled', true);
                     return false;
                 }
-                if (counter <= 2) {
-                    $("#removeButton").hide();
+                if (methodCounter <= 3) {
+                    $("#removeMethod").hide();
                 }
 
-                counter--;
+                methodCounter--;
 
-                $("#TextBoxDiv" + counter).remove();
+                $("#TextBoxDivMethods" + methodCounter).remove();
 
             });
 
-            $("#getButtonValue").click(function () {
+            // ingredients
+            var ingredientCounter = 2;
+            $("#addIngredient").click(function () {
+                $(".removeIngredientDiv").show();
 
-                var msg = '';
-                for (i = 1; i < counter; i++) {
-                    msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+                if (ingredientCounter > 10) {
+                    alert("Only 10 steps allowed");
+                    return false;
                 }
-                alert(msg);
+
+                var newTextBoxDiv = $(document.createElement('div'))
+                    .attr("class", 'input-field col s12')
+                    .attr("id", 'TextBoxDivIngredients' + ingredientCounter);
+
+                newTextBoxDiv.after().html(
+                    '<textarea class="materialize-textarea" data-length="360" type="textbox" id="textbox' +
+                    ingredientCounter + '"name="method' + ingredientCounter + '"></textarea>' +
+                    '<label for="icon_prefix">Ingredient ' + ingredientCounter + '</label>'
+                );
+                newTextBoxDiv.appendTo("#TextBoxDivIngredients");
+                ingredientCounter++;
             });
+
+            $("#removeIngredient").click(function () {
+                console.log(ingredientCounter)
+                if (ingredientCounter <= 1) {
+                    $("#removeIngredient").prop('disabled', true);
+                    return false;
+                }
+                if (ingredientCounter <= 3) {
+                    $("#removeIngredient").hide();
+                }
+
+                ingredientCounter--;
+
+                $("#TextBoxDivIngredients" + ingredientCounter).remove();
+
+            });
+
+            // $("#getButtonValue").click(function () {
+
+            //     var msg = '';
+            //     for (i = 1; i < methodCounter; i++) {
+            //         msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
+            //     }
+            //     alert(msg);
+            // });
         });
     </script>
 

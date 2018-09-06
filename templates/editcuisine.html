@@ -1,20 +1,28 @@
 <!-- Form to edit existing cuisines -->
 {% extends 'base.html' %} {% block edit_cuisine %}
-<div class="row">
-    <form action="{{ url_for('update_cuisine', cuisine_id=cuisine._id) }}" method="POST" class="col s12">
+<div class="container">
+    <div class="row">
         <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">note_add</i>
-                <input id="cuisine_name" name="cuisine_name" type="text" class="validate" value="{{cuisine.cuisine_name}}">
-                <label for="icon_prefix">Cuisine</label>
-            </div>
+            <form action="{{ url_for('update_cuisine', cuisine_id=cuisine._id) }}" method="POST" class="col l8 offset-l2 add-recipe-form">
+                <div class="row">
+                    <h5>Edit cuisine</h5>
+                    <hr>
+                    <div class="input-field col s12">
+                        <input id="cuisine_name" name="cuisine_name" type="text" class="validate" value="{{cuisine.cuisine_name}}">
+                        <label for="icon_prefix">Cuisine</label>
+                    </div>
+                </div>
         </div>
+        <div class="row" align="center">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Edit cuisine
+                <i class="material-icons right">playlist_add</i>
+            </button>
+            <a href="{{url_for('get_cuisines')}}" class="btn waves-effect waves-light red">Cancel
+                    <i class="material-icons left">cancel</i>
+                </a>
+        </div>
+        </form>
+    </div>
 </div>
-<div class="row">
-    <button class="btn waves-effect waves-light" type="submit" name="action">Edit cuisine
-        <i class="material-icons right">playlist_add</i>
-    </button>
-</div>
-</form>
 </div>
 {% endblock %}
