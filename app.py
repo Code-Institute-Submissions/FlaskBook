@@ -135,6 +135,13 @@ def recipe_single(recipe_id):
     return render_template("recipepage.html", 
                 recipes=mongo.db.recipes.find( {'_id': ObjectId(recipe_id)}))
 
+# Construct shopping list for given recipe
+@app.route('/shopping_list/<recipe_id>')
+def shopping_list(recipe_id):
+    return render_template("shoppinglist.html",
+                recipes=mongo.db.recipes.find( {
+                    '_id': ObjectId(recipe_id)}))
+
 # Meal types *******************************************************************
 
 # Sort recipes:
@@ -318,11 +325,11 @@ def search_results(search_text):
 
 
 # For local deployment
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
 
 # For Heroku deployment    
-# if __name__ == '__main__':
-#     app.run(host=os.environ.get('IP'),
-#         port=int(os.environ.get('PORT')),
-#         debug=True)
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+        port=int(os.environ.get('PORT')),
+        debug=True)

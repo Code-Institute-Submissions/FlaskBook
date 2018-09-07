@@ -33,7 +33,7 @@ A development(subject to current dev changes) demo of this app can be viewed [he
 TODO:
 
 # Testing:
-Testing for this project was imlmented manually. The majority of testing covered the various Flask routes. Some examples of issues/tests on routes:
+Testing for this project was implemented manually. The majority of testing covered the various Flask routes. Some examples of issues/tests on routes:
 - When on the homepage, when clicking on a recipe category and no recipes for such a category exist then the user will be directed to the all recipes route.
 - When using the search bar, if nothing is input into the search field then the user will shown al recipes.
 - When sorting recipes by parameters i.e. newest/oldest, votes desc/asc etc. - if such a parameter is not recored in any given document, it is omitted from the sorted list which is returned.

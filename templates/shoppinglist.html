@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block shopping_list %}
+<div class="container">
+    <div class="row">
+        <div class="col s12 l4 offset-l3 ">
+            {% for recipe in recipes %}
+            <div class="col s12">
+                <div class="row">
+                    <div class="col s12 ">
+                        <div class="card hoverable">
+                            <div class="card-content">
+                                <strong>Ingredients: </strong>
+                                <li class="divider"></li>
+                                <br>
+                                <form action="#">
+                                    {% for ingredient in recipe.ingredients %}
+                                    <p>
+                                        <input type="checkbox" id="{{ingredient.name}}" />
+                                        <label for="{{ingredient.name}}">{{ingredient.name}}</label>
+                                      </p>
+                                    {% endfor %}
+                                </form>
+                                <br>
+                                <a href="{{url_for('recipe_single', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
+                                    data-position="bottom" data-tooltip="Upvote"><i class="fa fa-arrow-left"
+                                        aria-hidden="true"></i></a>Back to recipe
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-action card-action-icons">
+                    <!-- <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
+                        data-position="bottom" data-tooltip="Upvote"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a> -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
