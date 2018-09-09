@@ -12,7 +12,7 @@ body {
     overflow: hidden;
     position: fixed;
     /* padding-top: 5px; */
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
     bottom: 0;
     z-index: 9999;
     border-radius: 15px 15px 0px 0px;
