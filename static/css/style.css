@@ -5,6 +5,37 @@ body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+/* Bottom icon bar */
+.icon-bar {
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+    border-radius: 15px 15px 0px 0px;
+}
+
+.icon-bar a {
+    float: left;
+    width: 25%;
+    text-align: center;
+    /* padding-top: 15px; */
+    padding-bottom: 15px;
+    transition: all 0.3s ease;
+    color: rgb(138, 138, 138);
+    font-size: 20px;
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+/* ************************************************************************** */
+
 .card-min-height {
     min-height: 20vh;
 }
@@ -140,6 +171,7 @@ body {
 
 .nav-bgc {
     background-color: #fff;
+    border-radius: 0 0 15px 15px;
 }
 
 .nav-wrapper a {

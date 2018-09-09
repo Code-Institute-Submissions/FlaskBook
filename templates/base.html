@@ -26,9 +26,9 @@
                     <a href="#" data-activates="mobile-demo" class="button-collapse">
                         <i class="material-icons">menu</i>
                     </a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">                       
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
-                            <a href="{{url_for('get_recipes')}}">All recipes</a>                        
+                            <a href="{{url_for('get_recipes')}}">All recipes</a>
                         <li>
                             <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12 search-form">
                                 <input id="autocomplete-input" class="autocomplete search-input" type="search" name="search_text"
@@ -69,7 +69,15 @@
                     </ul>
                 </div>
             </div>
-        </nav>        
+        </nav>
+        <div class="icon-bar">
+            <!-- <a class="active" href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> -->
+            <a href="#"><i class="fa fa-cutlery" aria-hidden="true"></i>
+            </a>
+            <a href="#"><i class="fa fa-search"></i></a>
+            <a href="#"><i class="fa fa-envelope"></i></a>
+            <a href="#"><i class="fa fa-plus"></i></a>
+        </div>
     </header>
 
 
@@ -90,11 +98,11 @@
     {% block light_bites %} {% endblock %}
 
 
-    <div class="fixed-action-btn">
+    <!-- <div class="fixed-action-btn">
         <a class="btn-floating btn-large fab-button" href="{{url_for('add_recipe')}}">
             <i class="fa fa-plus tooltipped" aria-hidden="true" data-position="left" data-tooltip="Add recipe"></i>
         </a>
-    </div>
+    </div> -->
 
 
 
