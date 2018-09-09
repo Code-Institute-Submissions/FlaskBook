@@ -23,7 +23,7 @@ body {
     width: 25%;
     text-align: center;
     /* padding-top: 15px; */
-    padding-bottom: 15px;
+    /* padding-bottom: 15px; */
     transition: all 0.3s ease;
     color: rgb(75, 75, 75);
     font-size: 25px;
