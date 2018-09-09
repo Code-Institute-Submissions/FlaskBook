@@ -19,63 +19,72 @@
 
 <body class="body-custom">
     <header>
-        <nav class="nav-bgc">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a href="{{url_for('home_page')}}" class="brand-logo logo-color">CookBook</a>
-                    <a href="#" data-activates="mobile-demo" class="button-collapse">
-                        <i class="material-icons">menu</i>
-                    </a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li>
-                            <a href="{{url_for('get_recipes')}}">All recipes</a>
-                        <li>
-                            <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12 search-form">
-                                <input id="autocomplete-input" class="autocomplete search-input" type="search" name="search_text"
-                                    placeholder="Search" required>
-                            </form>
-                        </li>
-                        <li>
-                            <a id="sendForm" for="submit-form" class="waves-effect search-submit-button"><i class="material-icons right">search</i></a>
-
-                        </li>
-                    </ul>
-
-                    <ul class="side-nav" id="mobile-demo">
-                        <div class="mobile-nav">
+        <div class="navbar-fixed">
+            <nav class="nav-bar">
+                <div class="container">
+                    <div class="nav-wrapper">
+                        <a href="{{url_for('home_page')}}" class="brand-logo logo-color">CookBook</a>
+                        <!-- <a href="#" data-activates="mobile-nav" class="button-collapse right-align">
+                            <i class="material-icons">menu</i>
+                        </a> -->
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li>
-                                <a href="{{url_for('home_page')}}">Home</a>
+                                <a href="{{url_for('get_recipes')}}">All recipes</a>
+                            <li>
+                            <li>
+                                <a href="{{url_for('breakfast_meals')}}">Breakfast</a>
+                            <li>
+                            <li>
+                                <a href="{{url_for('lunch_meals')}}">Lunch</a>
+                            <li>
+                            <li>
+                                <a href="{{url_for('dinner_meals')}}">Dinner</a>
                             </li>
                             <li>
-                                <a href="{{url_for('get_recipes')}}">Recipes</a>
+                                <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12 search-form">
+                                    <input id="autocomplete-input" class="autocomplete search-input" type="search" name="search_text"
+                                        placeholder="Search" required>
+                                </form>
                             </li>
-                            <a>
-                                <li class="divider"></li>
+                            <li>
+                                <a id="sendForm" for="submit-form" class="waves-effect search-submit-button"><i class="material-icons right">search</i></a>
+                            </li>
+                        </ul>
+                        <!-- <ul class="side-nav" id="mobile-nav">
+                            <div class="mobile-nav">
                                 <li>
-                                    <a href="{{url_for('get_cuisines')}}">Cuisines</a>
+                                    <a href="{{url_for('home_page')}}">Home</a>
                                 </li>
                                 <li>
-                                    <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
-                                        <input id="search" type="search" name="search_text" placeholder="Search"
-                                            required>
-                                    </form>
+                                    <a href="{{url_for('get_recipes')}}">Recipes</a>
                                 </li>
-                                <li>
-                                    <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small"><i
-                                            class="material-icons right">search</i></a>
+                                <a>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="{{url_for('get_cuisines')}}">Cuisines</a>
+                                    </li>
+                                    <li>
+                                        <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
+                                            <input id="search" type="search" name="search_text" placeholder="Search"
+                                                required>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <a id="sendForm" for="submit-form" class="waves-effect waves-light btn-small"><i
+                                                class="material-icons right">search</i></a>
 
-                                </li>
-                        </div>
-                    </ul>
+                                    </li>
+                            </div>
+                        </ul> -->
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
         <div class="icon-bar hide-on-med-and-up">
-            <!-- <a class="active" href="#"><i class="fa fa-cutlery" aria-hidden="true"></i> -->            
-            <a href="{{url_for('get_recipes')}}"><i class="fa fa-cutlery"></i><p class="icon-bar-text"></p></a>
-            <a href="#"><i class="fa fa-clock-o"></i><p class="icon-bar-text"></p></a>
-            <a href="#"><i class="fa fa-search"></i><p class="icon-bar-text"></p></a>
-            <a href="{{url_for('add_recipe')}}"><i class="fa fa-plus"></i><p class="icon-bar-text"></p></a>
+            <a href="{{url_for('get_recipes')}}"><i class="fa fa-search"></i>
+            </a>
+            <a href="{{url_for('add_recipe')}}"><i class="fa fa-plus"></i>
+            </a>
         </div>
     </header>
 
@@ -97,11 +106,11 @@
     {% block light_bites %} {% endblock %}
 
 
-    <!-- <div class="fixed-action-btn">
+    <div class="fixed-action-btn hide-on-small-only">
         <a class="btn-floating btn-large fab-button" href="{{url_for('add_recipe')}}">
             <i class="fa fa-plus tooltipped" aria-hidden="true" data-position="left" data-tooltip="Add recipe"></i>
         </a>
-    </div> -->
+    </div>
 
 
 

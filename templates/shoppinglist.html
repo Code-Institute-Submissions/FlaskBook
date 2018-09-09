@@ -6,23 +6,26 @@
             <div class="col s12">
                 <div class="row">
                     <div class="col s12 ">
+                            <h5><strong>A handy shopping list for {{recipe.title}}: </strong></h5>
                         <div class="card hoverable">
                             <div class="card-content">
-                                <strong>Ingredients: </strong>
+                                <strong>Tick off the items as you shop.</strong>
                                 <li class="divider"></li>
                                 <br>
                                 <form action="#">
                                     {% for ingredient in recipe.ingredients %}
                                     <p>
-                                        <input type="checkbox" id="{{ingredient.name}}" />
-                                        <label for="{{ingredient}}">{{ingredient}}</label>
-                                      </p>
+                                        <label>
+                                            <input type="checkbox" id="{{ingredient}}"/>
+                                            <label for="{{ingredient}}"class="shopping-list-item">{{ingredient}}</label>
+                                        </label>
+                                    </p>
                                     {% endfor %}
                                 </form>
                                 <br>
                                 <div class="left-align">
-                                    <a href="{{url_for('recipe_single', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 "><i class="fa fa-arrow-left"
-                                        aria-hidden="true"></i></a>
+                                    <a href="{{url_for('recipe_single', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 "><i
+                                            class="fa fa-arrow-left" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>

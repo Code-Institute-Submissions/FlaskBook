@@ -20,7 +20,7 @@ body {
 
 .icon-bar a {
     float: left;
-    width: 25%;
+    width: 50%;
     text-align: center;
     /* padding-top: 15px; */
     /* padding-bottom: 15px; */
@@ -38,7 +38,7 @@ body {
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: transparent;
 }
 /* ************************************************************************** */
 
@@ -64,6 +64,10 @@ body {
 
 .margin-top-3vh{
     margin-top: 3vh;
+}
+
+.margin-bottom-5vh{
+    margin-bottom: 5vh;
 }
 
 .mobile-search-bar{
@@ -176,8 +180,14 @@ body {
     color: #222 !important;
 }
 
-.nav-bgc {
-    background-color: #fff;    
+.shopping-list-item{
+    font-size: 5px;
+}
+
+
+.nav-bar {
+    background-color:#fff;    
+    
 }
 
 .nav-wrapper a {

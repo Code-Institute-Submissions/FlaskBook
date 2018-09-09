@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block edit_recipe %}
 <div class="container">
-    <div class="row">
+    <div class="row margin-bottom-5vh">
         <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12 l8 offset-l2 add-recipe-form">
             <div class="row">
                 <h5>Edit recipe</h5>
@@ -23,9 +23,10 @@
                 </div>
                 <div id="TextBoxesGroupIngredients">
                     <!-- Ingredients -->
-                    <div class="input-field col s6" id="TextBoxDivIngredients">
+                    <div class="input-field col s12" id="TextBoxDivIngredients">
                         {% for ingredient in recipe.ingredients %}
                         <input id="recipe_ingredient" name="ingredient" type="text" value="{{ingredient}}">
+                        <label for="recipe_ingredient">Ingredients</label>
                         {% endfor %}
                         <div class="row">
                             <a class="btn waves-effect waves-light btn-x-small" id="addIngredient"><i class="fa fa-plus"

@@ -1,11 +1,25 @@
 {% extends 'base.html' %} {% block search_results %}
-<div class="center-align margin-top-3vh">
-    <h5>Search results</h5>
-    <li class="divider"></li>
-</div>
-<div class="row">
+
+    <div class="center-align margin-top-3vh">        
+    </div>
+    <div class="row">
+        <div class="row hide-on-med-and-up">
+            <nav class="mobile-search-bar">
+                <div class="nav-wrapper">
+                    <form id="search-form-mobile" action="{{ url_for('search_box') }}" method="POST" class="col s12">
+                        <div class="input-field">
+                            <input class="mobile-search-bar" type="search" name="search_text" placeholder="Search" required>
+                            <i class="material-icons" id="sendFormMobile" for="submit-form">search</i>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="col s12">
+                {% include 'sort-menu.html' %}{% block sort %}
+                {% endblock %}
+            </div>
         <div class="col l8 offset-l2">
-            
             {% for recipe in recipes %}
             <div class="col s12 m6 l6">
                 <div class="card hoverable">
@@ -36,6 +50,7 @@
             {% endfor %}
         </div>
     </div>
+
 
 
 {% endblock %}
