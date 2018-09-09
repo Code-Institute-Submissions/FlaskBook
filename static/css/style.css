@@ -29,9 +29,9 @@ body {
     font-size: 25px;
 }
 
-.icon-bar a:hover {
+/* .icon-bar a:hover {
     background-color: #000;
-}
+} */
 .icon-bar-text{
     font-size: 10px;
     margin-top: -1px;
