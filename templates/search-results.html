@@ -1,54 +1,41 @@
 {% extends 'base.html' %} {% block search_results %}
-<div>
-    <h4 style="text-align:center">Search results</h4>
+<div class="center-align margin-top-3vh">
+    <h5>Search results</h5>
+    <li class="divider"></li>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col l8 offset-l2">            
+<div class="row">
+        <div class="col l8 offset-l2">
+            
             {% for recipe in recipes %}
             <div class="col s12 m6 l6">
                 <div class="card hoverable">
-                    <div class="card-content">                            
+                    <div class="card-image">
+                        <img src="/static/img/rice.jpeg" class="responsive-image card-img">
                         <span class="card-title"><strong class="strong-text"><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}"
-                                    class="recipe-title-text">{{recipe.title}}</a></strong></span>
-                                    
-                                <p>
-                                    <strong>Preparation time: </strong>{{recipe['prep-time']}} mins. <br>
-                                    <strong> Cooking time: </strong>{{recipe['cooking-time']}} mins. <br>
-                                    <strong>Serves: </strong>{{recipe.serves}} people.
-                                </p>
-                        
+                                    class="card-title-text">{{recipe.title}}</a></strong></span>
                     </div>
-                    <div class="card-action">                        
-                                <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
-                                data-position="bottom" data-tooltip="Upvote"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{recipe.votes}}</a>                        
-                        <!-- <a href="{{url_for('downvote_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small brown lighten-1 tooltipped"
-                                    data-position="bottom" data-tooltip="Downvote"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
-                                <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small blue tooltipped "
-                                    data-position="bottom" data-tooltip="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                </a>-->
-                                <!-- <span class="card-title activator grey-text text-darken-4" style="margin-top:30px;"><i class="material-icons right">more_vert</i></span> -->
-                        <!-- <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small rose-taupe tooltipped" 
-                            data-position="bottom" data-tooltip="Upvote">{{recipe.votes}}</a> -->
-                            <a class="hvr-grow waves-effect waves-light btn btn_small rose-taupe  activator"><i class="fa fa-eye" aria-hidden="true"></i>
-                            </a>
-                            <!-- <a class="hvr-grow waves-effect waves-light btn btn_small"><i class="fa fa-clock-o" aria-hidden="true"><strong>{{recipe['cooking-time']}}</strong></i>
-                            </a> -->
-                            
+                    <div class="card-action">
+                        <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
+                            data-position="bottom" data-tooltip="Upvote"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                            {{recipe.votes}}</a>
+                        <a class="hvr-grow waves-effect waves-light btn btn_small rose-taupe  activator"><i class="fa fa-eye"
+                                aria-hidden="true"></i>
+                        </a>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4"><strong><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}"
                                     class="recipe-title-text">{{recipe.title}}</a></strong> <i class="material-icons right">close</i></span>
                         <p>{{recipe.description}}.</p>
-                      </div>
+                        <strong>Preparation time: </strong>{{recipe['prep-time']}} mins. <br>
+                        <strong> Cooking time: </strong>{{recipe['cooking-time']}} mins. <br>
+                        <strong>Serves: </strong>{{recipe.serves}} people.
+                        <p><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}">Go to recipe</a></p>
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-
     </div>
-</div>
-
 
 
 {% endblock %}

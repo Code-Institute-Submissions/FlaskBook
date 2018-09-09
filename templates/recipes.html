@@ -1,47 +1,38 @@
 {% extends 'base.html' %} {% block recipes %}
-<div class="container">
-    <div class="row">
-        <div class="col l8 offset-l2">
-            <div class="col s12">
-                {% include 'sort-menu.html' %}{% block sort %}
-                {% endblock %}
-            </div>
-            {% for recipe in recipes %}
-            <div class="col s12 m6 l6">
-                <div class="card hoverable">
-                    <div class="card-content">
-                        <span class="card-title"><strong class="strong-text"><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}"
-                                    class="recipe-title-text">{{recipe.title}}</a></strong></span>
-                        <p>
-                            <strong>Preparation time: </strong>{{recipe['prep-time']}} mins. <br>
-                            <strong> Cooking time: </strong>{{recipe['cooking-time']}} mins. <br>
-                            <strong>Serves: </strong>{{recipe.serves}} people.
-                        </p>
-                    </div>
-                    <div class="card-action">
-                        <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
-                            data-position="bottom" data-tooltip="Upvote"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
-                            {{recipe.votes}}</a>
-                        <a class="hvr-grow waves-effect waves-light btn btn_small rose-taupe  activator"><i class="fa fa-eye"
-                                aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4"><strong><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}"
-                                    class="recipe-title-text">{{recipe.title}}</a></strong> <i class="material-icons right">close</i></span>
-                        <p>{{recipe.description}}.</p>
-                        <strong>Preparation time: </strong>{{recipe['prep-time']}} mins. <br>
-                            <strong> Cooking time: </strong>{{recipe['cooking-time']}} mins. <br>
-                            <strong>Serves: </strong>{{recipe.serves}} people.
-                    </div>
+<div class="row">
+    <div class="col l8 offset-l2">
+        <div class="col s12">
+            {% include 'sort-menu.html' %}{% block sort %}
+            {% endblock %}
+        </div>
+        {% for recipe in recipes %}
+        <div class="col s12 m6 l6">
+            <div class="card hoverable">
+                <div class="card-image">
+                    <img src="/static/img/rice.jpeg" class="responsive-image card-img">
+                    <span class="card-title"><strong class="strong-text"><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}"
+                                class="card-title-text">{{recipe.title}}</a></strong></span>
+                </div>
+                <div class="card-action">
+                    <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
+                        data-position="bottom" data-tooltip="Upvote"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                        {{recipe.votes}}</a>
+                    <a class="hvr-grow waves-effect waves-light btn btn_small rose-taupe  activator"><i class="fa fa-eye"
+                            aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"><strong><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}"
+                                class="recipe-title-text">{{recipe.title}}</a></strong> <i class="material-icons right">close</i></span>
+                    <p>{{recipe.description}}.</p>
+                    <strong>Preparation time: </strong>{{recipe['prep-time']}} mins. <br>
+                    <strong> Cooking time: </strong>{{recipe['cooking-time']}} mins. <br>
+                    <strong>Serves: </strong>{{recipe.serves}} people.
+                    <p><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}">Go to recipe</a></p>
                 </div>
             </div>
-            {% endfor %}
         </div>
-
+        {% endfor %}
     </div>
 </div>
-
-
-
 {% endblock %}

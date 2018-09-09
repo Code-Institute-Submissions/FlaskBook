@@ -25,7 +25,12 @@ body {
     margin-top: 5vh;
 }
 
+.margin-top-3vh{
+    margin-top: 3vh;
+}
+
 .mobile-search-bar{
+    margin-top: 15px;
     color: black;
     background-color: #fff;
 }
@@ -151,12 +156,12 @@ body {
 
 .container-img {
     position: relative;
-    text-align: center;
+    text-align: center;    
 }
 
 .centered-img {
-    padding: 15px;
-    /* background: rgba(0, 0, 0, 0.137); */
+    /* padding: 15px; */
+    /* background: rgba(0, 0, 0, 0.308); */
     color: #fff;
     position: absolute;
     top: 25%;
@@ -166,11 +171,11 @@ body {
 }
 
 .centered-img-mobile {
-    padding: 15px;
-    /* background: rgba(0, 0, 0, 0.137); */
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.137);
     color: #fff;
     position: absolute;
-    top: 25%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 50px;
@@ -191,6 +196,11 @@ body {
 
 .strong-text {
     color: #252627;
+}
+
+.card-img{
+    position: absolute;
+    max-height: 40vh;
 }
 
 .btn_small {
