@@ -32,7 +32,7 @@ def get_recipes():
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('addrecipe.html',
-    users=mongo.db.users.find(), cuisines=mongo.db.cuisine.find())
+    users=mongo.db.users.find(), cuisines=mongo.db.cuisine.find(), meals=mongo.db.meals.find())
 
 # Submit add recipe form    
 @app.route('/insert_recipe', methods=['POST'])
@@ -40,81 +40,76 @@ def insert_recipe():
     recipes =  mongo.db.recipes
 
     recipe_title = request.form['title']
+    recipe_description = request.form['description']
     recipe_method = request.form['method']
-    recipe_method2 = request.form['method2']
-    recipe_method3 = request.form['method3']
-    recipe_method4 = request.form['method4']
-    recipe_method5 = request.form['method5']
-    recipe_method6 = request.form['method6']
-    recip_cuisine = request.form['cuisine']
+    recipe_ingredient = request.form.getlist('ingredient')
+    recipe_meal = request.form.get('meal')
+    recipe_serves = request.form['serves']
+    recipe_cookingtime = request.form['cooking_time']
+    recipe_preptime = request.form['prep_time']
+    recipe_cuisine = request.form['cuisine']
     recipe_user = request.form['user']
     
     recipe_form = {
         "title": recipe_title,
-        "methods": [
-            {
-                "step": recipe_method
-            },
-            {
-                "step": recipe_method2
-            },
-            {
-                "step": recipe_method3
-            },
-            {
-                "step": recipe_method4
-            },
-            {
-                "step": recipe_method5
-            },
-            {
-                "step": recipe_method6
-            }
-        ],
-        "cuisine": recip_cuisine,
-        "user": recipe_user
+        "description": recipe_description,
+        "method": recipe_method,
+        "ingredients": recipe_ingredient, 
+        "meal": recipe_meal,
+        "serves":  recipe_serves,
+        "cooking-time": recipe_cookingtime,
+        "prep-time": recipe_preptime,
+        "cuisine": recipe_cuisine,
+        "user": recipe_user,
+        "last_modified": time.asctime(time.localtime(time.time()))
     }
-    print(recipe_form)
+    
     recipes.insert_one(recipe_form)
-
-    # recipes.insert_one(request.form.to_dict(flat=False))
-    # recipes.insert_one(request.form.to_dict())
-    # print(recipe_form)
-    # recipes.insert_one(recipe_form)
     return redirect(url_for('get_recipes'))
 
 # Edit recipe form
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     cuisines =  mongo.db.cuisine.find()
+    meals = mongo.db.recipes.find()
+    ingredients = mongo.db.recipes.ingredients.find()
     users = mongo.db.users.find()
     return render_template('editrecipe.html', 
-            recipe=the_recipe, cuisines=cuisines, users=users)
+            recipe=recipe, cuisines=cuisines, users=users, ingredients=ingredients, meals=meals) 
 
 
 # Submit edit recipe form
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
-    # FIXME: cuisine and author is causing bug to not send form
-    # print({'_id': ObjectId(recipe_id)},
-    # {
-    #     'title':request.form['recipe_title'],
-    #     'method':request.form['recipe_method'],
-    #     # 'cuisine': request.form['cuisine_name']
-    # })
+
+    recipe_title = request.form['title']
+    recipe_description = request.form['description']
+    recipe_method = request.form['method']
+    recipe_ingredient = request.form.getlist('ingredient')
+    recipe_meal = request.form.get('meal')
+    recipe_serves = request.form['serves']
+    recipe_cookingtime = request.form['cooking_time']
+    recipe_preptime = request.form['prep_time']
+    recipe_cuisine = request.form['cuisine']
+    recipe_user = request.form['user']
+
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
-        'title':request.form['recipe_title'],
-        'method':request.form['recipe_method'],
-        # 'author': request.form['user_name']
-        # 'cuisine': request.form['cuisine_name']
-    })
+        "title": recipe_title,
+        "description": recipe_description,
+        "method": recipe_method,
+        "ingredients": recipe_ingredient, 
+        "meal": recipe_meal,
+        "serves":  recipe_serves,
+        "cooking-time": recipe_cookingtime,
+        "prep-time": recipe_preptime,
+        "cuisine": recipe_cuisine,
+        "user": recipe_user,
+        "last_modified": time.asctime(time.localtime(time.time()))
+    })    
     return redirect(url_for('get_recipes'))
-
-
-
 
 # Delete/Mark done recipe
 @app.route('/delete_recipe/<recipe_id>')

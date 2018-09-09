@@ -22,21 +22,16 @@
         <nav class="nav-bgc">
             <div class="container">
                 <div class="nav-wrapper">
-                    <a href="{{url_for('home_page')}}" class="brand-logo">Cook Book</a>
+                    <a href="{{url_for('home_page')}}" class="brand-logo logo-color">CookBook</a>
                     <a href="#" data-activates="mobile-demo" class="button-collapse">
                         <i class="material-icons">menu</i>
                     </a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">                       
                         <li>
-                            <a href="{{url_for('home_page')}}">Home</a>
-                        </li>
+                            <a href="{{url_for('get_recipes')}}">All recipes</a>                        
                         <li>
-                            <a href="{{url_for('get_recipes')}}">Recipes</a>
-                        <li>
-                            <a href="{{url_for('get_cuisines')}}">Cuisines</a>
-                        <li>
-                            <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12">
-                                <input id="autocomplete-input" class="autocomplete" type="search" name="search_text"
+                            <form id="search-form" action="{{ url_for('search_box') }}" method="POST" class="col s12 search-form">
+                                <input id="autocomplete-input" class="autocomplete search-input" type="search" name="search_text"
                                     placeholder="Search" required>
                             </form>
                         </li>
@@ -74,7 +69,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>        
     </header>
 
 
@@ -96,21 +91,9 @@
 
 
     <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red fab-button" href="{{url_for('add_recipe')}}">
-            <i class="large material-icons fab-button">mode_edit</i>
+        <a class="btn-floating btn-large fab-button" href="{{url_for('add_recipe')}}">
+            <i class="fa fa-plus tooltipped" aria-hidden="true" data-position="left" data-tooltip="Add recipe"></i>
         </a>
-        <!-- <ul>
-            <li>
-                <a class="btn-floating green" href="{{url_for('add_cuisine')}}">
-                    <i class="fa fa-book" aria-hidden="true"></i>
-                </a>Cuisine
-            </li>
-            <li>
-                <a class="btn-floating blue" href="{{url_for('add_recipe')}}">
-                    <i class="fa fa-cutlery" aria-hidden="true"></i>
-                </a>Recipe
-            </li>
-        </ul> -->
     </div>
 
 
@@ -162,6 +145,13 @@
                 }
             });
         });
+        $(document).ready(function () {
+            $("#sendFormMobile").click(function () {
+                if ($('#sendFromMobile').html() != '') {
+                    $("#search-form-mobile").submit();
+                }
+            });
+        });
     </script>
 
     <!-- TODO: Reload votes div without refresh -->
@@ -197,44 +187,6 @@
 
     <script>
         $(document).ready(function () {
-            var methodCounter = 2;
-            $("#addMethod").click(function () {
-                $(".removeMethodDiv").show();
-
-                if (methodCounter > 10) {
-                    alert("Only 10 steps allowed");
-                    return false;
-                }
-
-                var newTextBoxDiv = $(document.createElement('div'))
-                    .attr("class", 'input-field col s12')
-                    .attr("id", 'TextBoxDivMethods' + methodCounter);
-
-                newTextBoxDiv.after().html(
-                    '<textarea class="materialize-textarea" data-length="360" type="textbox" id="textbox' +
-                    methodCounter + '"name="method' + methodCounter + '"></textarea>' +
-                    '<label for="icon_prefix">Step ' + methodCounter + '</label>'
-                );
-                newTextBoxDiv.appendTo("#TextBoxDivMethods");
-                methodCounter++;
-            });
-
-            $("#removeMethod").click(function () {
-                console.log(methodCounter)
-                if (methodCounter <= 1) {
-                    $("#removeMethod").prop('disabled', true);
-                    return false;
-                }
-                if (methodCounter <= 3) {
-                    $("#removeMethod").hide();
-                }
-
-                methodCounter--;
-
-                $("#TextBoxDivMethods" + methodCounter).remove();
-
-            });
-
             // ingredients
             var ingredientCounter = 2;
             $("#addIngredient").click(function () {
@@ -250,9 +202,7 @@
                     .attr("id", 'TextBoxDivIngredients' + ingredientCounter);
 
                 newTextBoxDiv.after().html(
-                    '<textarea class="materialize-textarea" data-length="360" type="textbox" id="textbox' +
-                    ingredientCounter + '"name="method' + ingredientCounter + '"></textarea>' +
-                    '<label for="icon_prefix">Ingredient ' + ingredientCounter + '</label>'
+                    '<input  id="recipe_ingredient" name="ingredient" type="text" required placeholder="Ingredient">'
                 );
                 newTextBoxDiv.appendTo("#TextBoxDivIngredients");
                 ingredientCounter++;
@@ -273,15 +223,6 @@
                 $("#TextBoxDivIngredients" + ingredientCounter).remove();
 
             });
-
-            // $("#getButtonValue").click(function () {
-
-            //     var msg = '';
-            //     for (i = 1; i < methodCounter; i++) {
-            //         msg += "\n Textbox #" + i + " : " + $('#textbox' + i).val();
-            //     }
-            //     alert(msg);
-            // });
         });
     </script>
 

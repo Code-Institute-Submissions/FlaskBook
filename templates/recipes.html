@@ -30,6 +30,9 @@
                         <span class="card-title grey-text text-darken-4"><strong><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}"
                                     class="recipe-title-text">{{recipe.title}}</a></strong> <i class="material-icons right">close</i></span>
                         <p>{{recipe.description}}.</p>
+                        <strong>Preparation time: </strong>{{recipe['prep-time']}} mins. <br>
+                            <strong> Cooking time: </strong>{{recipe['cooking-time']}} mins. <br>
+                            <strong>Serves: </strong>{{recipe.serves}} people.
                     </div>
                 </div>
             </div>

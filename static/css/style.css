@@ -1,29 +1,48 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
-body{
+
+body {
     font-family: 'Ubuntu', sans-serif;
 }
 
+.card-min-height {
+    min-height: 20vh;
+}
 
-.card-action.card-action-icons{
+.card-action.card-action-icons {
     padding: 1px;
 }
 
-.float-right{
-    float:right;
+.float-right {
+    float: right;
 }
-.add-recipe-submit-btns{
+
+.add-recipe-submit-btns {
     margin-top: 10vh;
 }
 
-.add-recipe-form{
+.add-recipe-form {
     margin-top: 5vh;
+}
+
+.mobile-search-bar{
+    color: black;
+    background-color: #fff;
+}
+
+.input-field .mobile-search-bar{
+    position: absolute;
+    top: 15%;
+    border-bottom: 0px solid #ad1d1d !important;
+}
+
+.mobile-search-bar-icon{
+    color: black;
 }
 
 .carousel-slider {
     height: 400px !important;
 }
-
 
 .dropdown-content {
     position: absolute !important;
@@ -71,8 +90,12 @@ body{
     border-radius: 25px;
 }
 
-.card-action-bgcolor {
-    background-color: #F2EFE9;
+.card-action.card-action-bgcolor {
+    background: #fff;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+    color: #222;
+    text-transform: lowercase;
 }
 
 .refine-menu {
@@ -106,8 +129,60 @@ body{
     background-color: #904E55;
 }
 
+.brand-logo {
+    color: #222 !important;
+}
+
 .nav-bgc {
-    background-color: #564E58;
+    background-color: #fff;
+}
+
+.nav-wrapper a {
+    color: #222;
+}
+
+.search-input {
+    color: #222;
+}
+
+.search-form {
+    margin-left: 50px;
+}
+
+.container-img {
+    position: relative;
+    text-align: center;
+}
+
+.centered-img {
+    padding: 15px;
+    /* background: rgba(0, 0, 0, 0.137); */
+    color: #fff;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+}
+
+.centered-img-mobile {
+    padding: 15px;
+    /* background: rgba(0, 0, 0, 0.137); */
+    color: #fff;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+}
+
+.centered-img-p{
+    font-size: 20px;
+}
+#image {
+    margin-top: -10px;
+    max-height: 75vh;
+    width: 100%;
 }
 
 .body-custom {
@@ -135,9 +210,10 @@ body{
     margin-top: 15px;
 }
 
-/* .fab-button{
-    background-color: #904E55;
-} */
+.fab-button {
+    background-color: #26a69a;
+}
+
 .mobile-nav {
     margin-top: 25%;
 }

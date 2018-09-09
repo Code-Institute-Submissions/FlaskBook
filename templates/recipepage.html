@@ -1,43 +1,36 @@
 {% extends 'base.html' %} {% block recipe_single %}
 <div class="container">
     <div class="row">
-        <div class="col l7 offset-l2 ">
+        <div class="col s12 m12 l7 offset-l2 ">
             {% for recipe in recipes %}
-            <div class="col s12">
+            <div class="col l12">
                 <div class="card hoverable">
                     <div class="card-content">
                         <h4><span class="card-title"><strong class="strong-text"><a href="{{url_for('recipe_single', recipe_id=recipe._id)}}"
-                                        class="recipe-title-text">{{recipe.title}}</a></strong></span></h4>
-                        <span class="right-align"><strong>by </strong>{{recipe.user}}</span>
+                                        class="recipe-title-text">{{recipe.title}}</a></strong></span></h4>                        
                         <li class="divider"></li>
                         <br>
-                        <p>{{recipe.description}}</p><br>
-                        <div class="">
-                            <a href="{{url_for('shopping_list', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
-                        data-position="right" data-tooltip="Shopping list"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
-                        </div>
+                        <p>{{recipe.description}}</p><br>                        
                     </div>
                 </div>
-
-
-
                 <div class="row">
                     <div class="col s12 l6">
-                        <div class="card hoverable">
+                        <div class="card hoverable card-min-height">
                             <div class="card-content">
                                 <strong>Ingredients: </strong>
                                 <li class="divider"></li>
                                 {% for ingredient in recipe.ingredients %}
-                                <p><strong>- {{ingredient['name']}} => </strong> {{ingredient['qty']}}
-                                    {{ingredient['unit']}}</p>
+                                <p><strong>- {{ingredient}} </strong>
                                 {% endfor %}
                                 <!-- <a href="{{url_for('shopping_list', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
                         data-position="bottom" data-tooltip="Upvote"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>Shopping list -->
                             </div>
+                            <a href="{{url_for('shopping_list', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
+                            data-position="right" data-tooltip="Shopping list"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                         </div>
                     </div>
                     <div class="col s12 l6">
-                        <div class="card hoverable">
+                        <div class="card hoverable card-min-height">
                             <div class="card-content">
                                 <strong>Details:</strong>
                                 <li class="divider"></li>
@@ -55,7 +48,7 @@
                     <div class="card-content">
                         <strong>Method:</strong>
                         <li class="divider"></li>
-                        {{recipe.methods}}
+                        {{recipe.method}}
                     </div>
                 </div>
                 <div class="card hoverable">
@@ -63,16 +56,15 @@
                         <strong>Entered/Updated:</strong>
                         <li class="divider"></li>
                         {{recipe.last_modified}}
+                        <strong>by </strong>{{recipe.user}}
                     </div>
                 </div>
                 <div class="card-action card-action-icons">
-                    <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
-                        data-position="bottom" data-tooltip="Upvote"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
-                    <a href="{{url_for('upvote_recipe', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small rose-taupe tooltipped 
-                                data-position="
-                        bottom" data-tooltip="Votes">{{recipe.votes}}</a>
+                    <a href="#" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
+                            data-position="right" data-tooltip="Votes"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                            {{recipe.votes}}</a>                    
                     <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small blue tooltipped float-right"
-                        data-position="bottom" data-tooltip="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>
+                        data-position="left" data-tooltip="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
