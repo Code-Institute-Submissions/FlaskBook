@@ -11,6 +11,8 @@ body {
     background-color: #fff;
     overflow: hidden;
     position: fixed;
+    /* padding-top: 5px; */
+    padding-bottom: 20px;
     bottom: 0;
     z-index: 9999;
     border-radius: 15px 15px 0px 0px;
@@ -170,8 +172,7 @@ body {
 }
 
 .nav-bgc {
-    background-color: #fff;
-    border-radius: 0 0 15px 15px;
+    background-color: #fff;    
 }
 
 .nav-wrapper a {
