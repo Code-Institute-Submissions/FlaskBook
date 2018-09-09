@@ -322,7 +322,6 @@ def search_results(search_text):
 # For local deployment
 # if __name__ == '__main__':
 #     app.run(debug=True)
-# 
 
 # For Heroku deployment    
 if __name__ == '__main__':

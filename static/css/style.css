@@ -66,6 +66,7 @@ body {
     margin-top: 15px;
     color: black;
     background-color: #fff;
+    border-radius: 30px 30px 30px 30px;
 }
 
 .input-field .mobile-search-bar{
