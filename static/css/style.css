@@ -25,12 +25,16 @@ body {
     /* padding-top: 15px; */
     padding-bottom: 15px;
     transition: all 0.3s ease;
-    color: rgb(138, 138, 138);
-    font-size: 20px;
+    color: rgb(75, 75, 75);
+    font-size: 25px;
 }
 
 .icon-bar a:hover {
     background-color: #000;
+}
+.icon-bar-text{
+    font-size: 10px;
+    margin-top: -1px;
 }
 
 .active {
