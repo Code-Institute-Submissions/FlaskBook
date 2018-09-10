@@ -80,13 +80,13 @@
                 </div>
             </nav>
         </div>
-        <div class="icon-bar hide-on-large">
-            <a href="{{url_for('get_recipes')}}"><i class="fa fa-search"></i>
-            </a>
-            <a href="{{url_for('add_recipe')}}"><i class="fa fa-plus"></i>
-            </a>
-        </div>
     </header>
+    <div class="icon-bar show-on-small hide-on-med-and-up">
+        <a href="{{url_for('get_recipes')}}"><i class="fa fa-search"></i>
+        </a>
+        <a href="{{url_for('add_recipe')}}"><i class="fa fa-plus"></i>
+        </a>
+    </div>
 
 
     {% block recipes %} {% endblock %}
