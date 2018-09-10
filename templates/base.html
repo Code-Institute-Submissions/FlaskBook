@@ -24,9 +24,9 @@
                 <div class="container">
                     <div class="nav-wrapper">
                         <a href="{{url_for('home_page')}}" class="brand-logo logo-color">CookBook</a>
-                        <!-- <a href="#" data-activates="mobile-nav" class="button-collapse right-align">
+                        <a href="#" data-activates="mobile-nav" class="button-collapse right-align">
                             <i class="material-icons">menu</i>
-                        </a> -->
+                        </a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li>
                                 <a href="{{url_for('get_recipes')}}">All recipes</a>
@@ -50,7 +50,7 @@
                                 <a id="sendForm" for="submit-form" class="waves-effect search-submit-button"><i class="material-icons right">search</i></a>
                             </li>
                         </ul>
-                        <!-- <ul class="side-nav" id="mobile-nav">
+                        <ul class="side-nav" id="mobile-nav">
                             <div class="mobile-nav">
                                 <li>
                                     <a href="{{url_for('home_page')}}">Home</a>
@@ -75,12 +75,12 @@
 
                                     </li>
                             </div>
-                        </ul> -->
+                        </ul>
                     </div>
                 </div>
             </nav>
         </div>
-        <div class="icon-bar hide-on-med-and-up">
+        <div class="icon-bar hide-on-large">
             <a href="{{url_for('get_recipes')}}"><i class="fa fa-search"></i>
             </a>
             <a href="{{url_for('add_recipe')}}"><i class="fa fa-plus"></i>

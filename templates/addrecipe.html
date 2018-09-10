@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block add_recipe %}
-<div class="container">
+<div class="container form-container">
     <div class="row margin-bottom-5vh">
-        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s12 l8 offset-l2 add-recipe-form">
+        <form action="{{ url_for('insert_recipe') }}" method="POST" class="col s10 offset-s1 l8 offset-l2 add-recipe-form">
             <div class="row">
                 <h5>Add recipe</h5>
                 <hr>
                 <div class="input-field col s12">
                     <div class="row">
                         <div class="input-field"><input id="title" name="title" type="text" value="" required>
-                            <label for="title">Cuisine</label></div>
+                            <label for="title">Title</label></div>
                         <div class="input-field">
                             <input id="description" name="description" type="text" value="" required>
                             <label for="description">Description</label>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="input-field col s12">
-                    <div class="col s3 input-field" id="recipe_meal">
+                    <div class="col s6 l3 input-field" id="recipe_meal">
                         <select class="form-control" id="meal" name="meal">
                             <option value="" disabled selected>Meal</option>
                             {% for meal in meals %}
@@ -42,17 +42,17 @@
                             <label for="recipe_meal">Meal</label>
                         </select>
                     </div>
-                    <div class="col s3 input-field">
+                    <div class="col s6 l3 input-field">
                         <input id="recipe_serves" name="serves" type="text" placeholder="Serves" value="" required>
                         <label for="recipe_serves">Serves</label>
                     </div>
 
-                    <div class="col s3 input-field">
+                    <div class="col s6 l3 input-field">
                         <input id="recipe_cook_time" name="cooking_time" type="text" placeholder="Cooking time" value=""
                             required>
                         <label for="recipe_cook_time">Cooking time</label>
                     </div>
-                    <div class="col s3 input-field">
+                    <div class="col s6 l3 input-field">
                         <input id="recipe_prep_time" name="prep_time" type="text" placeholder="Prep time" value=""
                             required>
                         <label for="recipe_prep_time">Prep time</label>
