@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block edit_recipe %}
 <div class="container">
     <div class="row margin-bottom-5vh">
-        <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12 l8 offset-l2 add-recipe-form">
+        <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col s10 offset-s1 l8 offset-l2 add-recipe-form">
             <div class="row">
                 <h5>Edit recipe</h5>
                 <hr>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="input-field col s12">
-                    <div class="col s3 input-field" id="recipe_meal">
+                    <div class="col s6 l3 input-field" id="recipe_meal">
                         <select class="form-control" id="meal" name="meal">
                             <option value="" disabled selected>Meal</option>
                             {% for meal in meals %}
@@ -46,16 +46,16 @@
                             <label for="recipe_meal">Meal</label>
                         </select>
                     </div>
-                    <div class="col s3 input-field">
+                    <div class="col s6 l3 input-field">
                         <input id="recipe_serves" name="serves" type="text" placeholder="Serves" value="{{recipe.serves}}">
                         <label for="recipe_serves">Serves</label>
                     </div>
 
-                    <div class="col s3 input-field">
+                    <div class="col s6 l3 input-field">
                         <input id="recipe_cook_time" name="cooking_time" type="text" placeholder="Cooking time" value="{{recipe['cooking-time']}}">
                         <label for="recipe_cook_time">Cooking time</label>
                     </div>
-                    <div class="col s3 input-field">
+                    <div class="col s6 l3 input-field">
                         <input id="recipe_prep_time" name="prep_time" type="text" placeholder="Prep time" value="{{recipe['prep-time']}}">
                         <label for="recipe_prep_time">Prep time</label>
                     </div>
