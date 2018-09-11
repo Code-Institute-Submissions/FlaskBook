@@ -21,9 +21,7 @@
                                 <li class="divider"></li>
                                 {% for ingredient in recipe.ingredients %}
                                 <p><strong>- {{ingredient}} </strong>
-                                {% endfor %}
-                                <!-- <a href="{{url_for('shopping_list', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
-                        data-position="bottom" data-tooltip="Upvote"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>Shopping list -->
+                                {% endfor %}                                
                             </div>
                             <a href="{{url_for('shopping_list', recipe_id=recipe._id)}}" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
                             data-position="right" data-tooltip="Shopping list"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>

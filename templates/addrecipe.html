@@ -6,22 +6,20 @@
                 <h5>Add recipe</h5>
                 <hr>
                 <div class="input-field col s12">
-                    <div class="row">
-                        <div class="input-field"><input id="title" name="title" type="text" value="" required>
-                            <label for="title">Title</label></div>
-                        <div class="input-field">
-                            <input id="description" name="description" type="text" value="" required>
-                            <label for="description">Description</label>
-                        </div>
-                        <div class="input-field">
-                            <input id="method" name="method" type="text" value="" required>
-                            <label for="method">Method</label>
-                        </div>
+                    <div class="input-field"><input id="title" name="title" type="text" value="" required>
+                        <label for="title">Title</label></div>
+                    <div class="input-field">
+                        <input id="description" name="description" type="text" value="" required>
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="method" name="method" type="text" value="" required>
+                        <label for="method">Method</label>
                     </div>
                 </div>
                 <div id="TextBoxesGroupIngredients">
                     <!-- Ingredients -->
-                    <div class="input-field col s6" id="TextBoxDivIngredients">
+                    <div class="input-field col s12" id="TextBoxDivIngredients">
                         <input id="recipe_ingredient" name="ingredient" type="text" value="">
                         <label for="recipe_ingredient">Ingredient 1</label>
                         <div class="row">
@@ -43,18 +41,16 @@
                         </select>
                     </div>
                     <div class="col s6 l3 input-field">
-                        <input id="recipe_serves" name="serves" type="text"  value="" required>
+                        <input id="recipe_serves" name="serves" type="text" value="" required>
                         <label for="recipe_serves">Serves</label>
                     </div>
 
                     <div class="col s6 l3 input-field">
-                        <input id="recipe_cook_time" name="cooking_time" type="text"  value=""
-                            required>
+                        <input id="recipe_cook_time" name="cooking_time" type="text" value="" required>
                         <label for="recipe_cook_time">Cooking time</label>
                     </div>
                     <div class="col s6 l3 input-field">
-                        <input id="recipe_prep_time" name="prep_time" type="text"  value=""
-                            required>
+                        <input id="recipe_prep_time" name="prep_time" type="text" value="" required>
                         <label for="recipe_prep_time">Prep time</label>
                     </div>
                 </div>
@@ -76,6 +72,9 @@
                     {% endfor %}
                 </select>
             </div>
+
+            <!-- File uploads -->
+            
             <div class="row add-recipe-submit-btns center-align">
                 <button class="btn waves-effect waves-light hvr-icon-up" type="submit" name="">Submit
                     <i class="fa fa-paper-plane-o hvr-icon"></i>
@@ -84,52 +83,8 @@
                     <!-- <i class="material-icons left">cancel</i> -->
                 </a>
             </div>
-
-            <!-- Ingredients -->
-            <!-- <div class="row">
-                    <div class="input-field col s6 l3">
-                        <i class="material-icons prefix">shopping_cart</i>
-                        <input id="ingredient_name" name="ingredient1" type="text">
-                        <label for="icon_prefix">Ingredients:</label>
-                    </div>
-                    <div class="input-field col s6 l3">
-                        <i class="material-icons prefix">shopping_cart</i>
-                        <input id="ingredient_name" name="ingredient2" type="text">
-                        <label for="icon_prefix">Ingredients:</label>
-                    </div>
-                    <div class="input-field col s6 l3">
-                        <i class="material-icons prefix">shopping_cart</i>
-                        <input id="ingredient_name" name="ingredient3" type="text">
-                        <label for="icon_prefix">Ingredients:</label>
-                    </div>
-                    <div class="input-field col s6 l3">
-                        <i class="material-icons prefix">shopping_cart</i>
-                        <input id="ingredient_name" name="ingredient4" type="text">
-                        <label for="icon_prefix">Ingredients:</label>
-                    </div>
-                </div> -->
-            <!-- Allergens -->
-            <!-- <div class="input-field col s6 l6">
-                    <i class="material-icons prefix">warning</i>
-                    <select multiple id="allergens" name="allergens[]">
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>    
-                    </select>
-                </div> -->
-
-            <!-- <div class="row">
-                    <div class="switch">
-                        <label>
-                            <input id="is_urgent" name="is_urgent" type="checkbox">
-                            <span class="lever"></span>
-                            Is Urgent
-                        </label>
-                    </div>
-                </div> -->
-
+        </form>
     </div>
-    </form>
 </div>
 </div>
 

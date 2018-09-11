@@ -4,7 +4,7 @@ import datetime, time
 from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-
+from werkzeug import secure_filename
 
 
 
@@ -20,8 +20,19 @@ mongo = PyMongo(app)
 def home_page():
     return render_template("home.html")
 
+# File uploads *****************************************************************    
+# @app.route('/upload')
+# def upload_file():
+#    return render_template('upload.html')
+	
+# @app.route('/uploader', methods = ['GET', 'POST'])
+# def upload_file():
+#    if request.method == 'POST':
+#       f = request.files['file']
+#       f.save(secure_filename(f.filename))
+#       return 'file uploaded successfully'
 
-# Recipes *********************************************************************
+# Recipes **********************************************************************
 # Get all recipes
 @app.route('/get_recipes')
 def get_recipes():

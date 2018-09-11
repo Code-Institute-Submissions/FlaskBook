@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block edit_recipe %}
-<div class="container">
+<div class="container form-container">
     <div class="row margin-bottom-5vh">
         <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col s10 offset-s1 l8 offset-l2 add-recipe-form">
             <div class="row">
@@ -24,9 +24,9 @@
                 <div id="TextBoxesGroupIngredients">
                     <!-- Ingredients -->
                     <div class="input-field col s12" id="TextBoxDivIngredients">
+                        <!-- <label for="recipe_ingredient">Ingredients</label> -->
                         {% for ingredient in recipe.ingredients %}
                         <input id="recipe_ingredient" name="ingredient" type="text" value="{{ingredient}}">
-                        <label for="recipe_ingredient">Ingredients</label>
                         {% endfor %}
                         <div class="row">
                             <a class="btn waves-effect waves-light btn-x-small" id="addIngredient"><i class="fa fa-plus"
@@ -86,52 +86,8 @@
                     <!-- <i class="material-icons left">cancel</i> -->
                 </a>
             </div>
-
-            <!-- Ingredients -->
-            <!-- <div class="row">
-                    <div class="input-field col s6 l3">
-                        <i class="material-icons prefix">shopping_cart</i>
-                        <input id="ingredient_name" name="ingredient1" type="text">
-                        <label for="icon_prefix">Ingredients:</label>
-                    </div>
-                    <div class="input-field col s6 l3">
-                        <i class="material-icons prefix">shopping_cart</i>
-                        <input id="ingredient_name" name="ingredient2" type="text">
-                        <label for="icon_prefix">Ingredients:</label>
-                    </div>
-                    <div class="input-field col s6 l3">
-                        <i class="material-icons prefix">shopping_cart</i>
-                        <input id="ingredient_name" name="ingredient3" type="text">
-                        <label for="icon_prefix">Ingredients:</label>
-                    </div>
-                    <div class="input-field col s6 l3">
-                        <i class="material-icons prefix">shopping_cart</i>
-                        <input id="ingredient_name" name="ingredient4" type="text">
-                        <label for="icon_prefix">Ingredients:</label>
-                    </div>
-                </div> -->
-            <!-- Allergens -->
-            <!-- <div class="input-field col s6 l6">
-                    <i class="material-icons prefix">warning</i>
-                    <select multiple id="allergens" name="allergens[]">
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>    
-                    </select>
-                </div> -->
-
-            <!-- <div class="row">
-                    <div class="switch">
-                        <label>
-                            <input id="is_urgent" name="is_urgent" type="checkbox">
-                            <span class="lever"></span>
-                            Is Urgent
-                        </label>
-                    </div>
-                </div> -->
-
+        </form>
     </div>
-    </form>
 </div>
 </div>
 
