@@ -38,8 +38,8 @@
                 </div>
                 <div class="input-field col s12">
                     <div class="col s6 l3 input-field" id="recipe_meal">
-                        <select class="form-control" id="meal" name="meal">
-                            <option value="" disabled selected>Meal</option>
+                        <select class="form-control" id="meal" name="meal" required>
+                            <!-- <option value="" disabled selected>Meal</option> -->
                             {% for meal in meals %}
                             <option value="{{meal.meal}}">{{meal.meal}}</option>
                             {% endfor %}
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="input-field col s12 l5">
-                <select id="cuisine_name" name="cuisine">
+                <select id="cuisine_name" name="cuisine" required>
                     <!-- <option value="" disabled selected>Choose cuisine</option> -->
                     {% for cuisine in cuisines %}
                     <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
@@ -71,7 +71,7 @@
             </div>
             <!-- User -->
             <div class="input-field col s12 l5 offset-l2">
-                <select id="user_name" name="user">
+                <select id="user_name" name="user" required>
                     <!-- <option value="" disabled selected>User</option> -->
                     {% for user in users %}
                     <option value="{{user.user_name}}">{{user.user_name}}</option>
