@@ -24,7 +24,6 @@
                 <div id="TextBoxesGroupIngredients">
                     <!-- Ingredients -->
                     <div class="input-field col s12" id="TextBoxDivIngredients">
-                        <!-- <label for="recipe_ingredient">Ingredients</label> -->
                         {% for ingredient in recipe.ingredients %}
                         <input id="recipe_ingredient" name="ingredient" type="text" value="{{ingredient}}">
                         {% endfor %}
@@ -39,7 +38,6 @@
                 <div class="input-field col s12">
                     <div class="col s6 l3 input-field" id="recipe_meal">
                         <select class="form-control" id="meal" name="meal" required>
-                            <!-- <option value="" disabled selected>Meal</option> -->
                             {% for meal in meals %}
                             <option value="{{meal.meal}}">{{meal.meal}}</option>
                             {% endfor %}
@@ -47,23 +45,25 @@
                         </select>
                     </div>
                     <div class="col s6 l3 input-field">
-                        <input id="recipe_serves" name="serves" type="number" placeholder="Serves" value="{{recipe.serves}}" required>
+                        <input id="recipe_serves" name="serves" type="number" placeholder="Serves" value="{{recipe.serves}}"
+                            required>
                         <label for="recipe_serves">Serves</label>
                     </div>
 
                     <div class="col s6 l3 input-field">
-                        <input id="recipe_cook_time" name="cooking_time" type="number" placeholder="Cooking time" value="{{recipe['cooking-time']}}" required>
+                        <input id="recipe_cook_time" name="cooking_time" type="number" placeholder="Cooking time" value="{{recipe['cooking-time']}}"
+                            required>
                         <label for="recipe_cook_time">Cooking time</label>
                     </div>
                     <div class="col s6 l3 input-field">
-                        <input id="recipe_prep_time" name="prep_time" type="number" placeholder="Prep time" value="{{recipe['prep-time']}}" required>
+                        <input id="recipe_prep_time" name="prep_time" type="number" placeholder="Prep time" value="{{recipe['prep-time']}}"
+                            required>
                         <label for="recipe_prep_time">Prep time</label>
                     </div>
                 </div>
             </div>
             <div class="input-field col s12 l5">
                 <select id="cuisine_name" name="cuisine" required>
-                    <!-- <option value="" disabled selected>Choose cuisine</option> -->
                     {% for cuisine in cuisines %}
                     <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
                     {% endfor %}
@@ -72,7 +72,6 @@
             <!-- User -->
             <div class="input-field col s12 l5 offset-l2">
                 <select id="user_name" name="user" required>
-                    <!-- <option value="" disabled selected>User</option> -->
                     {% for user in users %}
                     <option value="{{user.user_name}}">{{user.user_name}}</option>
                     {% endfor %}
@@ -83,7 +82,6 @@
                     <i class="fa fa-paper-plane-o hvr-icon"></i>
                 </button>
                 <a href="{{url_for('get_recipes')}}" class="btn waves-effect waves-light red">Cancel
-                    <!-- <i class="material-icons left">cancel</i> -->
                 </a>
             </div>
         </form>

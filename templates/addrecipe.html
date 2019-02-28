@@ -33,11 +33,9 @@
                 <div class="input-field col s12">
                     <div class="col s6 l3 input-field" id="recipe_meal">
                         <select class="form-control" id="meal" name="meal" required>
-                            <!-- <option value="" disabled selected>Meal</option> -->
                             {% for meal in meals %}
                             <option value="{{meal.meal}}">{{meal.meal}}</option>
                             {% endfor %}
-                            <!-- <label for="recipe_meal">Meal</label> -->
                         </select>
                     </div>
                     <div class="col s6 l3 input-field">
@@ -57,7 +55,6 @@
             </div>
             <div class="input-field col s12 l5">
                 <select id="cuisine_name" name="cuisine" required>
-                    <!-- <option value="" disabled selected>Choose cuisine</option> -->
                     {% for cuisine in cuisines %}
                     <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
                     {% endfor %}
@@ -66,21 +63,17 @@
             <!-- User -->
             <div class="input-field col s12 l5 offset-l2">
                 <select id="user_name" name="user" required>
-                    <!-- <option value="" disabled selected>User</option> -->
                     {% for user in users %}
                     <option value="{{user.user_name}}">{{user.user_name}}</option>
                     {% endfor %}
                 </select>
             </div>
-
             <!-- File uploads -->
-            
             <div class="row add-recipe-submit-btns center-align">
                 <button class="btn waves-effect waves-light hvr-icon-up" type="submit" name="">Submit
                     <i class="fa fa-paper-plane-o hvr-icon"></i>
                 </button>
                 <a href="{{url_for('get_recipes')}}" class="btn waves-effect waves-light red">Cancel
-                    <!-- <i class="material-icons left">cancel</i> -->
                 </a>
             </div>
         </form>
