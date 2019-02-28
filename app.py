@@ -1,4 +1,4 @@
-# Import neccessary modules
+# Import necessary modules
 import datetime
 import os
 import time
@@ -8,6 +8,7 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_pymongo import PyMongo
 from werkzeug import secure_filename
 
+import env
 
 app = Flask(__name__)
 # Set app variables
@@ -36,6 +37,7 @@ def get_recipes():
 def add_recipe():
     return render_template('addrecipe.html',
                            users=mongo.db.users.find(), cuisines=mongo.db.cuisine.find(), meals=mongo.db.meals.find())
+
 
 # Submit add recipe form
 @app.route('/insert_recipe', methods=['POST'])
@@ -69,6 +71,7 @@ def insert_recipe():
 
     recipes.insert_one(recipe_form)
     return redirect(url_for('get_recipes'))
+
 
 # Edit recipe form
 @app.route('/edit_recipe/<recipe_id>')
@@ -114,24 +117,20 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('get_recipes'))
 
+
 # Delete/Mark done recipe
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
 
-# Recipe on seperate page
-# @app.route('/recipe_page/<recipe_id>', methods=['POST'])
-# def recipe_page(recipe_id):
-#     this_recipe = recipe_id
-#     print("This recipe: ", this_recipe)
-#     return redirect(url_for('recipe_single', this_recipe=this))
 
 # Render the single recipe
 @app.route('/recipe_single/<recipe_id>')
 def recipe_single(recipe_id):
     return render_template("recipepage.html",
                            recipes=mongo.db.recipes.find({'_id': ObjectId(recipe_id)}))
+
 
 # Construct shopping list for given recipe
 @app.route('/shopping_list/<recipe_id>')
@@ -140,8 +139,8 @@ def shopping_list(recipe_id):
                            recipes=mongo.db.recipes.find({
                                '_id': ObjectId(recipe_id)}))
 
-# Meal types *******************************************************************
 
+# Meal types *******************************************************************
 # Sort recipes:
 # by Cooking-time descending
 @app.route('/recipes_time_desc')
@@ -150,12 +149,14 @@ def recipes_time_desc():
         {"cooking-time": {"$gt": 0}}).sort([("cooking-time", -1)])
     return render_template("recipes.html", recipes=col_sorted_desc)
 
+
 # by Cooking-time ascending
 @app.route('/recipes_time_asc')
 def recipes_time_asc():
     col_sorted_asc = mongo.db.recipes.find(
         {"cooking-time": {"$gt": 0}}).sort([("cooking-time", 1)])
     return render_template("recipes.html", recipes=col_sorted_asc)
+
 
 # by Votes descending
 @app.route('/votes_desc')
@@ -164,12 +165,14 @@ def votes_desc():
         {"votes": {"$gt": -1}}).sort([("votes", -1)])
     return render_template("recipes.html", recipes=col_sorted_votes_desc)
 
+
 # by Votes ascending
 @app.route('/votes_asc')
 def votes_asc():
     col_sorted_votes_asc = mongo.db.recipes.find(
         {"votes": {"$gt": -1}}).sort([("votes", 1)])
     return render_template("recipes.html", recipes=col_sorted_votes_asc)
+
 
 # by Date descending
 @app.route('/date_desc')
@@ -179,6 +182,7 @@ def date_desc():
     #     print("Item: ", item)
     return render_template("recipes.html", recipes=col_sorted_date_desc)
 
+
 # by Date ascending
 @app.route('/date_asc')
 def date_asc():
@@ -187,6 +191,7 @@ def date_asc():
     #     print("Item: ", item)
     return render_template("recipes.html", recipes=col_sorted_date_asc)
 
+
 # Meal types *******************************************************************
 # Breakfast meals
 @app.route('/breakfast_meals')
@@ -194,11 +199,13 @@ def breakfast_meals():
     return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "breakfast"}))
 
+
 # Lunch meals
 @app.route('/lunch_meals')
 def lunch_meals():
     return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "lunch"}))
+
 
 # Dinner meals
 @app.route('/dinner_meals')
@@ -206,11 +213,13 @@ def dinner_meals():
     return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "dinner"}))
 
+
 # Dessert meals
 @app.route('/dessert_meals')
 def dessert_meals():
     return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "dessert"}))
+
 
 # Snack meals
 @app.route('/snack_meals')
@@ -218,13 +227,15 @@ def snack_meals():
     return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "snack"}))
 
+
 # Ligt-bites meals
 @app.route('/lightbites_meals')
 def lightbites_meals():
     return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "light-bites"}))
-# Cuisines *********************************************************************
 
+
+# Cuisines *********************************************************************
 # Get cuisines route
 @app.route('/get_cuisines')
 def get_cuisines():
@@ -235,6 +246,7 @@ def get_cuisines():
         print(item)
 
     return render_template('cuisines.html', cuisines=mongo.db.cuisine.find())
+
 
 # Edit cuisine
 @app.route('/edit_cuisine/<cuisine_id>')
@@ -260,11 +272,13 @@ def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({'_id': ObjectId(cuisine_id)})
     return redirect(url_for('get_cuisines'))
 
+
 # Add new cuisine form
 @app.route('/add_cuisine')
 def add_cuisine():
     return render_template('addcuisine.html',
                            cuisines=mongo.db.cuisine.find())
+
 
 # Submit add cuisine form
 @app.route('/insert_cuisine', methods=["POST"])
@@ -273,10 +287,9 @@ def insert_cuisine():
     cuisines.insert_one(request.form.to_dict())
     return redirect(url_for('get_cuisines'))
 
+
 # Users ************************************************************************
-
-# Voting ***********************************************************************
-
+# Voting:
 # Upvote recipe
 @app.route('/upvote_recipe/<recipe_id>', methods=["GET", "POST"])
 def upvote_recipe(recipe_id):
@@ -287,6 +300,7 @@ def upvote_recipe(recipe_id):
     }
     )
     return redirect(url_for('get_recipes'))
+
 
 # Downvote recipe
 @app.route('/downvote_recipe/<recipe_id>', methods=["GET", "POST"])
@@ -310,6 +324,7 @@ def search_box():
     else:
         return render_template("recipes.html", recipes=mongo.db.recipes.find())
 
+
 # Search results route
 @app.route('/search_results/<search_text>')
 def search_results(search_text):
@@ -321,11 +336,11 @@ def search_results(search_text):
 
 
 # For local deployment
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
 
 # For Heroku deployment
-if __name__ == '__main__':
-    app.run(host=os.environ.get('IP'),
-        port=int(os.environ.get('PORT')),
-        debug=True)
+# if __name__ == '__main__':
+#     app.run(host=os.environ.get('IP'),
+#             port=int(os.environ.get('PORT')),
+#             debug=True)
