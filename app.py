@@ -334,13 +334,13 @@ def search_results(search_text):
     #     print("Search results: ", item)
     return render_template("search-results.html", recipes=search_results)
 
-
+# **********************************************************************
 # For local deployment
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
 
 # For Heroku deployment
-# if __name__ == '__main__':
-#     app.run(host=os.environ.get('IP'),
-#             port=int(os.environ.get('PORT')),
-#             debug=True)
+if __name__ == '__main__':
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=True)
