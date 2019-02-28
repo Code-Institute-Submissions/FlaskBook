@@ -167,9 +167,6 @@ This is the process I have tested to enable local development and deployment.
 - Run the server: `python3 app.py`
 
 
-## References:
-- PyMongo docs: https://api.mongodb.com/python/current/tutorial.html
-- Flask docs: http://flask.pocoo.org/docs/1.0/
 
 ## Databse schema:
 - The main MongoDB collection `recipes` takes he following schema.
@@ -197,6 +194,10 @@ This is the process I have tested to enable local development and deployment.
     "last_modified": "Thu Feb 28 22:48:15 2019"
   }
 ```
+
+## References:
+- PyMongo docs: https://api.mongodb.com/python/current/tutorial.html
+- Flask docs: http://flask.pocoo.org/docs/1.0/
 
 ## Credits
 
