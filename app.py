@@ -192,37 +192,37 @@ def date_asc():
 # Breakfast meals
 @app.route('/breakfast_meals')
 def breakfast_meals():
-    return render_template("breakfast.html",
+    return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "breakfast"}))
 
 # Lunch meals
 @app.route('/lunch_meals')
 def lunch_meals():
-    return render_template("lunch.html",
+    return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "lunch"}))
 
 # Dinner meals
 @app.route('/dinner_meals')
 def dinner_meals():
-    return render_template("dinner.html",
+    return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "dinner"}))
 
 # Dessert meals
 @app.route('/dessert_meals')
 def dessert_meals():
-    return render_template("dessert.html",
+    return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "dessert"}))
 
 # Snack meals
 @app.route('/snack_meals')
 def snack_meals():
-    return render_template("snack.html",
+    return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "snack"}))
 
 # Ligt-bites meals
 @app.route('/lightbites_meals')
 def lightbites_meals():
-    return render_template("light-bites.html",
+    return render_template("recipes.html",
                            recipes=mongo.db.recipes.find({"meal": "light-bites"}))
 # Cuisines *********************************************************************
 
