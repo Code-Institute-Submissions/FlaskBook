@@ -144,8 +144,8 @@ I have written an article on the rest of the process which is available [here](h
 ```
 
 ## Install/deploy locally
-### Ensure to comment out the `# For Heroku deployment` section of `app.py` when deploying locally.
-### Uncomment the `# For local deployment` section
+### Ensure to comment out the `#For Heroku deployment` section of `app.py` when deploying locally.
+### Uncomment the `#For local deployment` section
 
 This is the process I have tested to enable local development and deployment.
 - Clone the repository.
