@@ -8,7 +8,6 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_pymongo import PyMongo
 from werkzeug import secure_filename
 
-import env
 
 app = Flask(__name__)
 # Set app variables
