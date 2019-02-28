@@ -59,10 +59,13 @@
                 </div>
                 <div class="card-action card-action-icons">
                     <a href="#" id="upvote" class="hvr-grow waves-effect waves-light btn btn_small darken-1 tooltipped"
-                            data-position="right" data-tooltip="Votes"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                            data-position="bottom" data-tooltip="Votes"><i class="fa fa-thumbs-up" aria-hidden="true"></i>
                             {{recipe.votes}}</a>                    
                     <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small blue tooltipped float-right"
-                        data-position="left" data-tooltip="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>
+                        data-position="bottom" data-tooltip="Edit"><i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="hvr-grow waves-effect waves-light btn btn_small red tooltipped"
+                        data-position="bottom" data-tooltip="Delete"><i class="fa fa-trash" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
