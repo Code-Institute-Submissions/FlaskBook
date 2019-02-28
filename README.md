@@ -1,5 +1,66 @@
-# Project Goal:
-An online Cookbook/Recipe repository:
+# Flaskbook
+This repository contains the code for an online Cookbook/Recipe application. It is primarily built using Python and the Flask framework
+
+## UX
+This application is built with a mobile first, responsive design in mind.
+
+### User stories
+
+- As a new user, I should:
+    - see a homepage with a cover image with a tag line.
+    - see a main navigation with links to main recipe categories.
+    - see a search bar for finding recipes.
+    - see a floating button to allow users to create a new recipe.
+
+- As a user who wishes to create a recipe, I should:
+    - see a form allowing me to add the following fields:
+        - title, description, method.
+        - main ingredient, with the option to add/remove more ingredients as necessary.
+        - choose a meal time i.e. breakfast/lunch/dinner etc.
+        - servings per recipe.
+        - cooking and preparation time.
+        - cuisine i.e. Irish, Italian etc.
+        - assign a user name from dropdown (authentication is not required for this project).
+    - see a submit to send the form
+    - see a cancel button to return to all recipes.
+
+- As a user who wants to view all recipes, I should see a link to "all recipes" where I can see preview cards of each of the stored recipes, each displaying the following:
+    - thumbnail image.
+    - like count.
+    - preview icon, to view basic recipe details i.e. prep time, cook time, description etc.
+    - link to the full recipe listing.
+
+- As a user who wants to view sort all recipes, I should:
+    - on the al recipes page, see a dropdown listing various sorting methods:
+        - newest/oldest.
+        - cooking time descending/ascending
+        - votes descending/ascending.
+
+- As a user who wants to view a certain category of recipes, I should:
+    - click on the category name from a link and be taken to a page only returning recipes contained within those recipes
+
+- A a user who wants to view the full recipe listing, I should:
+    - click on a recipe card from the all recipes page and be taken to a page where I should:
+        - see a page detailing all recipe fields:
+            - title, description, method.
+            - ingredients.
+            - meal time.
+            - servings per recipe.
+            - cooking and preparation time.
+            - cuisine.
+            - user name.
+            - date/time entered or updated.
+            - votes.
+            - edit/delete controls.
+
+- As a user who wishes to see a shopping list - a helpful list which they can tick off as they collect items in a store - I should click on a shopping basket icon on the full recipe page.
+
+- As a user who wants to delete a recipe, I should click an appropriate icon on the recipe's page which will remove the recipe form the database.
+
+- As a user who wants to edit a recipe, I should click an appropriate icon on the recipe's page which will direct me to a form where I can edit all of the form fields and either submit the changes or cancel, returning to all recipes.
+
+- As user who wants to edit recipe, I should click on a particular recipe , w
+
 
 Create a web application that allows users to store and easily access cooking recipes
 Put some effort into designing a database schema based on recipes, and any other related properties and entities (e.g. views, upvotes, ingredients, recipe authors, allergens, author’s country of origin, cuisine etc…). 
